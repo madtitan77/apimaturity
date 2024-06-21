@@ -1,5 +1,12 @@
-<form (submit)="login()">
-  <input name="username" [(ngModel)]="credentials.username">
-  <input name="password" type="password" [(ngModel)]="credentials.password">
-  <button type="submit">Login</button>
-</form>
+<div class="login-wrapper">
+  <h2>Login</h2> <!-- This is the title -->
+  <form (submit)="login()">
+    <label for="username">Username</label> <!-- Label for username -->
+    <input name="username" id="username" [(ngModel)]="credentials.username">
+
+    <label for="password">Password</label> <!-- Label for password -->
+    <input name="password" type="password" id="password" [(ngModel)]="credentials.password">
+
+    <button type="submit">Login</button>
+  </form>
+</div>

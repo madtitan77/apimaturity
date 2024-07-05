@@ -32,7 +32,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(requests -> requests
-                .requestMatchers("/api/apimaturity/login").permitAll()
+                .requestMatchers("/api/apimaturity/login","/api/users/create").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -65,4 +65,5 @@ public class WebSecurityConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
+
 }

@@ -1,12 +1,15 @@
 <div class="login-wrapper">
-  <h2>Login</h2> <!-- This is the title -->
+  <h2>AI Assessment login</h2>
   <form (submit)="login()">
-    <label for="username">Username</label> <!-- Label for username -->
-    <input name="username" id="username" [(ngModel)]="credentials.username">
-
-    <label for="password">Password</label> <!-- Label for password -->
-    <input name="password" type="password" id="password" [(ngModel)]="credentials.password">
-
-    <button type="submit">Login</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput name="username" [(ngModel)]="credentials.username">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" name="password" [(ngModel)]="credentials.password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Login</button>
   </form>
+  <button mat-stroked-button routerLink="/register">Register</button>
 </div>

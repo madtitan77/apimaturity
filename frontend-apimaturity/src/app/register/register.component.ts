@@ -1,6 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'; 
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,11 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(
+      private fb: FormBuilder,
+      private http: HttpClient,
+      private router: Router // Inject Router,
+    ) { }
   
 
   ngOnInit(): void {
@@ -38,9 +43,14 @@ export class RegisterComponent implements OnInit {
         .subscribe({
           next: (response: any) => { // Specify the type of response
             console.log('Registration successful', response);
+            this.router.navigate(['/login']); 
           },
           error: (error: any) => { // Specify the type of error
             console.error('Registration failed', error);
+            if (error.status === 409) {
+              // Set an error on the email field
+              this.registerForm.controls['email'].setErrors({ alreadyRegistered: true });
+            }
           }
         });
     }

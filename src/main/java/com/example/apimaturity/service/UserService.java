@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class UserService {
     @Autowired
@@ -21,4 +20,6 @@ public class UserService {
         newUser.setPassword(passwordEncoder.encode(userCreationDTO.getPassword()));
         return userRepository.save(newUser);
     }
+
+    
 }

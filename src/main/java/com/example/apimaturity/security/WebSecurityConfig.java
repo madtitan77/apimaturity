@@ -44,7 +44,7 @@ public class WebSecurityConfig {
             // Configure authorization
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allow OPTIONS for all paths
-                .requestMatchers("/login", "/register", "/api/users/create").permitAll() // Specify paths to permit without authentication
+                .requestMatchers("/api/apimaturity/login", "/register", "/api/users/create").permitAll() // Specify paths to permit without authentication
                 .anyRequest().authenticated()
             )
             // Configure form login

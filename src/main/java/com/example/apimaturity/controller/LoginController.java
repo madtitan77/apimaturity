@@ -7,30 +7,40 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+
 
 @RestController
 @RequestMapping("/api/apimaturity")
 public class LoginController {
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+        logger.info("Attempting to authenticate user: {}", loginRequest.getUsername());
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getUsername(),
-                        loginRequest.getPassword()
-                )
-        );
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            loginRequest.getUsername(),
+                            loginRequest.getPassword()
+                    )
+            );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            logger.info("User {} authenticated successfully", loginRequest.getUsername());
 
-        // Here, you should return a valid response for your front-end application. 
-        // Such as UserDetails or JWT token, according to your security strategy.
-
-        return ResponseEntity.ok(authentication);
+            // Redirecting to /clients after successful authentication
+            return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/clients").build();
+        } catch (Exception e) {
+            logger.error("Authentication failed for user: {}", loginRequest.getUsername(), e);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
+        }
     }
 }
 

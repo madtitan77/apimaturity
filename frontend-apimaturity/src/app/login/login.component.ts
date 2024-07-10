@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (loginResponse: any) => {
           console.log(loginResponse);
-          this.router.navigate(['/client']); // Redirect to the client app
+          this.router.navigate(['/clients']); // Redirect to the client app
         },
         error: (error: any) => {
           console.log(error);

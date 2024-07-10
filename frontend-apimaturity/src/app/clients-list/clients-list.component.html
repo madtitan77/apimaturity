@@ -1,0 +1,25 @@
+<div *ngIf="clients.length > 0; else noClients">
+    <table>
+      <thead>
+        <tr>
+          <th>Client ID</th>
+          <th>Name</th>
+          <th>Notes</th>
+          <th>User ID</th>
+          <th>Industry</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.client_id }}</td>
+          <td>{{ client.name }}</td>
+          <td>{{ client.notes }}</td>
+          <td>{{ client.user_id }}</td>
+          <td>{{ client.industry }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noClients>
+    <p>No clients found.</p>
+  </ng-template>

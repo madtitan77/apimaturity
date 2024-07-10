@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import com.example.apimaturity.security.JwtUtils;
+import com.example.apimaturity.security.JwtResponse;  
 
 
 @RestController
@@ -20,29 +22,35 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-    logger.info("Attempting to authenticate user: {}", loginRequest.getUsername());
+        logger.info("Attempting to authenticate user: {}", loginRequest.getUsername());
 
-    try {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getUsername(),
-                        loginRequest.getPassword()
-                )
-        );
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            loginRequest.getUsername(),
+                            loginRequest.getPassword()
+                    )
+            );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        logger.info("User {} authenticated successfully", loginRequest.getUsername());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            
 
-        // Instead of redirecting, return a success message or token
-        // For simplicity, returning a success message. In a real application, you might return a JWT token here.
-        return ResponseEntity.ok("User authenticated successfully");
-    } catch (Exception e) {
-        logger.error("Authentication failed for user: {}", loginRequest.getUsername(), e);
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
+            String jwt = jwtUtils.generateJwtToken(authentication);
+
+            logger.info("User {} authenticated successfully", loginRequest.getUsername());
+            return ResponseEntity.ok(new JwtResponse(jwt, loginRequest.getUsername()));
+
+            } catch (Exception e) {
+                logger.error("Authentication failed for user: {}", loginRequest.getUsername(), e);
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
+        }
     }
-}
+
 }
 
 class LoginRequest {

@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.security.config.Customizer;
@@ -20,6 +21,9 @@ import java.util.Arrays;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.config.http.SessionCreationPolicy;
+
+
+
 
 
 @Configuration
@@ -54,7 +58,7 @@ public class WebSecurityConfig {
                 .permitAll()
             )
             .sessionManagement(session -> session
-                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) )
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) )
             // Configure logout
             .logout(logout -> logout
                 .permitAll())
@@ -62,8 +66,15 @@ public class WebSecurityConfig {
             .httpBasic(Customizer.withDefaults());
 
         // Additional configuration...
-
+        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        
+        
         return http.build();
+    }
+
+    @Bean
+    public AuthTokenFilter authenticationJwtTokenFilter() {
+        return new AuthTokenFilter();
     }
 
     @Bean

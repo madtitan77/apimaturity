@@ -22,26 +22,27 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        logger.info("Attempting to authenticate user: {}", loginRequest.getUsername());
+    logger.info("Attempting to authenticate user: {}", loginRequest.getUsername());
 
-        try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            loginRequest.getUsername(),
-                            loginRequest.getPassword()
-                    )
-            );
+    try {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginRequest.getUsername(),
+                        loginRequest.getPassword()
+                )
+        );
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            logger.info("User {} authenticated successfully", loginRequest.getUsername());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        logger.info("User {} authenticated successfully", loginRequest.getUsername());
 
-            // Redirecting to /clients after successful authentication
-            return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/clients").build();
-        } catch (Exception e) {
-            logger.error("Authentication failed for user: {}", loginRequest.getUsername(), e);
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
-        }
+        // Instead of redirecting, return a success message or token
+        // For simplicity, returning a success message. In a real application, you might return a JWT token here.
+        return ResponseEntity.ok("User authenticated successfully");
+    } catch (Exception e) {
+        logger.error("Authentication failed for user: {}", loginRequest.getUsername(), e);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
     }
+}
 }
 
 class LoginRequest {

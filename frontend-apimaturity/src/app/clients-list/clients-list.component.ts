@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientsService } from '../clients.service'; // Adjust the path as necessary
-import { Client } from '../models/clients.model'; // Adjust the path as necessary
+import { ClientsService } from '../clients.service'; 
+import { Client } from '../models/clients.model'; 
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-clients-list',
@@ -10,7 +11,7 @@ import { Client } from '../models/clients.model'; // Adjust the path as necessar
 export class ClientsListComponent implements OnInit {
   clients: Client[] = []; // Array to hold clients data
 
-  constructor(private clientsService: ClientsService) { }
+  constructor(private clientsService: ClientsService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchClients();
@@ -20,6 +21,10 @@ export class ClientsListComponent implements OnInit {
     this.clientsService.getClients().subscribe(
       (data: Client[]) => {
         this.clients = data;
+        if (this.clients.length === 0) {
+          // If no clients, navigate to client-add
+          this.router.navigate(['/client-add']); 
+        }
       },
       error => {
         console.error('There was an error!', error);

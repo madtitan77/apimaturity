@@ -17,13 +17,11 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import com.example.apimaturity.service.UserDetailsServiceImpl;
 import java.util.Arrays;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.config.http.SessionCreationPolicy;
-
-
-
 
 
 @Configuration
@@ -31,13 +29,22 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class WebSecurityConfig {
 
     private final UserDetailsService userDetailsService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtils jwtUtils;
 
-    public WebSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+    @Autowired
+    public WebSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, JwtUtils jwtUtils) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
+        this.jwtUtils = jwtUtils;
     }
+
+    // Other configurations remain the same
+    //@Bean
+    //public JwtUtils jwtUtils() {
+    // return an instance of JwtUtils, potentially passing in any required configuration
+    //return new JwtUtils();
+    //}
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -74,9 +81,9 @@ public class WebSecurityConfig {
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
-        return new AuthTokenFilter();
+        return new AuthTokenFilter(jwtUtils, (UserDetailsServiceImpl) userDetailsService);
     }
-
+    
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class).build();

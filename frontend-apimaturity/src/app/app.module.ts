@@ -13,14 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 // Step 2: Import MatSnackBarModule
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ClientsListComponent } from './clients-list/clients-list.component';
-import { ClientAddComponent } from './client-add/client-add.component';
-import { ClientEditComponent } from './client-edit/client-edit.component';
-import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
-import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');

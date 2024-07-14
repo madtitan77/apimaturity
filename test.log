@@ -1,0 +1,526 @@
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :resolveMainClassName UP-TO-DATE
+
+> Task :bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v3.2.7-SNAPSHOT)
+
+2024-07-14T14:51:00.043+02:00  INFO 16155 --- [apimatrurity] [           main] com.example.apimaturity.Application      : Starting Application using Java 17.0.11 with PID 16155 (/Users/Thanos_Tsiantoulis/code/java/apimatrurity/build/classes/java/main started by Thanos_Tsiantoulis in /Users/Thanos_Tsiantoulis/code/java/apimatrurity)
+2024-07-14T14:51:00.047+02:00  INFO 16155 --- [apimatrurity] [           main] com.example.apimaturity.Application      : No active profile set, falling back to 1 default profile: "default"
+2024-07-14T14:51:00.536+02:00  INFO 16155 --- [apimatrurity] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-14T14:51:00.576+02:00  INFO 16155 --- [apimatrurity] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 1 JPA repository interface.
+2024-07-14T14:51:00.950+02:00  INFO 16155 --- [apimatrurity] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-14T14:51:00.959+02:00  INFO 16155 --- [apimatrurity] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-14T14:51:00.959+02:00  INFO 16155 --- [apimatrurity] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-14T14:51:01.002+02:00  INFO 16155 --- [apimatrurity] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-14T14:51:01.003+02:00  INFO 16155 --- [apimatrurity] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 915 ms
+2024-07-14T14:51:01.101+02:00  INFO 16155 --- [apimatrurity] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-14T14:51:01.138+02:00  INFO 16155 --- [apimatrurity] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.9.Final
+2024-07-14T14:51:01.164+02:00  INFO 16155 --- [apimatrurity] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-14T14:51:01.337+02:00  INFO 16155 --- [apimatrurity] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-14T14:51:01.356+02:00  INFO 16155 --- [apimatrurity] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-14T14:51:01.440+02:00  INFO 16155 --- [apimatrurity] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@9408857
+2024-07-14T14:51:01.442+02:00  INFO 16155 --- [apimatrurity] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-14T14:51:01.469+02:00  WARN 16155 --- [apimatrurity] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-14T14:51:01.727+02:00  WARN 16155 --- [apimatrurity] [           main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.example.apimaturity.model.UserClientId
+2024-07-14T14:51:01.727+02:00  WARN 16155 --- [apimatrurity] [           main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.example.apimaturity.model.UserClientId
+2024-07-14T14:51:02.256+02:00  INFO 16155 --- [apimatrurity] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-14T14:51:02.374+02:00  INFO 16155 --- [apimatrurity] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-14T14:51:02.654+02:00  WARN 16155 --- [apimatrurity] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-14T14:51:02.753+02:00 DEBUG 16155 --- [apimatrurity] [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2024-07-14T14:51:02.810+02:00 DEBUG 16155 --- [apimatrurity] [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-07-14T14:51:02.852+02:00  INFO 16155 --- [apimatrurity] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2fbb098f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7866a7a6, org.springframework.security.web.context.SecurityContextHolderFilter@30a5a58d, org.springframework.security.web.header.HeaderWriterFilter@4244e477, org.springframework.web.filter.CorsFilter@2262bc86, org.springframework.security.web.authentication.logout.LogoutFilter@47bfde21, com.example.apimaturity.security.AuthTokenFilter@43e2b8da, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@45494046, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@11896af6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d763ae5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30eee098, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3872867d, org.springframework.security.web.session.SessionManagementFilter@63614cdd, org.springframework.security.web.access.ExceptionTranslationFilter@404566e7, org.springframework.security.web.access.intercept.AuthorizationFilter@526f8cb0]
+2024-07-14T14:51:02.900+02:00 DEBUG 16155 --- [apimatrurity] [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-14T14:51:02.924+02:00 DEBUG 16155 --- [apimatrurity] [           main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-14T14:51:03.008+02:00  INFO 16155 --- [apimatrurity] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-07-14T14:51:03.017+02:00  INFO 16155 --- [apimatrurity] [           main] com.example.apimaturity.Application      : Started Application in 3.336 seconds (process running for 3.64)
+2024-07-14T14:51:31.431+02:00  INFO 16155 --- [apimatrurity] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-14T14:51:31.431+02:00  INFO 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-14T14:51:31.431+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-07-14T14:51:31.431+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-07-14T14:51:31.432+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-07-14T14:51:31.432+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@22fe90df
+2024-07-14T14:51:31.433+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6b04689e
+2024-07-14T14:51:31.433+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-07-14T14:51:31.433+02:00  INFO 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-07-14T14:51:31.447+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/apimaturity/login
+2024-07-14T14:51:31.464+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/apimaturity/login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:31.676+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/apimaturity/login
+2024-07-14T14:51:31.677+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/apimaturity/login", parameters={}
+2024-07-14T14:51:31.679+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.apimaturity.controller.LoginController#authenticateUser(LoginRequest)
+2024-07-14T14:51:31.714+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.example.apimaturity.controller.LoginRequest@46a2720c]
+2024-07-14T14:51:31.720+02:00  INFO 16155 --- [apimatrurity] [nio-8080-exec-2] c.e.a.controller.LoginController         : Attempting to authenticate user: admin@apimaturity.com
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:31.910+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2024-07-14T14:51:31.927+02:00  INFO 16155 --- [apimatrurity] [nio-8080-exec-2] c.e.a.controller.LoginController         : User admin@apimaturity.com authenticated successfully
+2024-07-14T14:51:31.935+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-07-14T14:51:31.936+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.apimaturity.security.JwtResponse@40b5c907]
+2024-07-14T14:51:31.940+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-07-14T14:51:31.963+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/apimaturity/clients
+2024-07-14T14:51:31.967+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/apimaturity/clients
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:31.972+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/apimaturity/clients
+2024-07-14T14:51:31.972+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/apimaturity/clients", parameters={}
+2024-07-14T14:51:31.973+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:31.975+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:31.979+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/apimaturity/clients.]
+2024-07-14T14:51:31.979+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:31.983+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:31.984+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:31.986+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:31.986+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:31.987+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:31.991+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /login
+2024-07-14T14:51:31.996+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.000+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.001+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.001+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.002+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.002+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.003+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.003+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.004+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.004+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.004+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.004+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.009+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.014+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.014+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.014+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.015+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.015+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.015+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.016+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.016+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.016+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.017+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.017+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.022+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.027+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.027+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.028+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.029+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.029+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.029+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.030+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.031+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.031+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.031+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.031+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.036+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.040+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.040+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.041+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.042+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.042+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.042+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.043+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.043+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.044+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.044+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.044+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.049+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.054+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.054+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.054+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.055+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.056+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.056+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.057+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.057+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.057+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.057+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.058+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.062+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.066+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.067+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.067+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.068+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.068+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.068+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.069+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.069+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.069+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.069+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.070+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.074+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.078+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.078+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.079+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.079+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.079+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.080+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.080+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.080+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.080+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.081+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.081+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.085+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.089+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.089+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.089+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.090+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.090+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.090+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.091+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.091+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.091+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.091+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.091+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.095+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.099+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.099+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.099+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.100+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.100+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.100+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.101+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.101+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.101+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.101+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.101+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.105+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.109+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.109+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.109+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.110+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.110+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.110+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.111+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.112+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.112+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.112+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.112+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.116+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.119+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.119+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.120+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.120+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.120+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.121+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.121+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.122+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.122+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.122+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.122+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-6] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.126+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.132+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.132+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.133+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.135+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.135+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.135+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.136+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.136+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.136+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.136+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.137+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-7] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.141+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.145+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.145+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.146+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.147+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.147+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.147+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.148+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.148+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.149+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.149+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.149+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-8] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.154+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.158+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.158+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.158+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.159+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.159+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.159+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.160+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.160+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.160+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.160+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.160+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-9] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.164+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.168+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.168+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.168+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.169+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.169+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.169+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.170+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.170+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.170+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.170+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.170+02:00 DEBUG 16155 --- [apimatrurity] [io-8080-exec-10] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.174+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.178+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.178+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.178+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.179+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.179+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.179+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.179+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.180+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.180+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.180+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.180+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-1] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.184+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.187+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.187+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.188+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.188+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.188+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.189+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.189+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.189+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.190+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.190+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.190+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-2] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.194+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.197+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.198+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.198+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.198+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.198+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.198+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.199+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.199+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.199+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.200+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.200+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-3] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.213+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.217+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.217+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.217+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.217+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.218+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.218+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.218+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.218+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.218+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.218+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.218+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-4] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login
+2024-07-14T14:51:32.222+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /login
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-07-14T14:51:32.226+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /login
+2024-07-14T14:51:32.226+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-07-14T14:51:32.226+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-07-14T14:51:32.227+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-07-14T14:51:32.227+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-07-14T14:51:32.227+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-07-14T14:51:32.228+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /error
+2024-07-14T14:51:32.228+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-07-14T14:51:32.228+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@2681185e, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2024-07-14T14:51:32.228+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@22f7bf36
+2024-07-14T14:51:32.228+02:00 DEBUG 16155 --- [apimatrurity] [nio-8080-exec-5] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:8080/login

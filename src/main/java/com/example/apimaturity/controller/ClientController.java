@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController; 
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.GetMapping; // Add this import statement
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity; // Add this import statement
 import java.util.List; // Add this import statement
 import com.example.apimaturity.service.ClientService;
@@ -21,4 +24,10 @@ public class ClientController {
         List<Client> clients = clientService.findAllClients();
         return ResponseEntity.ok(clients);
     }
+
+    @PostMapping
+    public ResponseEntity<Client> createClient(@RequestBody Client client) {
+    Client savedClient = clientService.saveClient(client);
+    return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
+}
 }

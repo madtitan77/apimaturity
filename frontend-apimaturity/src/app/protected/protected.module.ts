@@ -8,6 +8,9 @@ import { ClientDetailComponent } from '../client-detail/client-detail.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input'; 
+import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms'; 
+
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { MatInputModule } from '@angular/material/input';
     ProtectedRoutingModule,
     MatFormFieldModule,   
     FormsModule, // Add FormsModule here
-    MatInputModule // Add MatInputModule here
+    MatInputModule, // Add MatInputModule here
+    MatTableModule,
+    ReactiveFormsModule,
   ]
+  
 })
 export class ProtectedModule { }

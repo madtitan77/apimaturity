@@ -1,5 +1,5 @@
 import { Component ,OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'; 
 import { Router } from '@angular/router'; 
 
@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm!: FormGroup;
+  registerForm!: UntypedFormGroup;
 
   constructor(
-      private fb: FormBuilder,
+      private fb: UntypedFormBuilder,
       private http: HttpClient,
       private router: Router // Inject Router,
     ) { }
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     }, { validator: this.checkPasswords });
   }
 
-  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  checkPasswords(group: UntypedFormGroup) { // here we have the 'passwords' group
     let pass = group.get('password')?.value;
     let confirmPass = group.get('verifyPassword')?.value;
 

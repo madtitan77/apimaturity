@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 // Step 2: Import MatSnackBarModule
 import { MatSnackBarModule } from '@angular/material/snack-bar';

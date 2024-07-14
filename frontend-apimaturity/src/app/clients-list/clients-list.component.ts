@@ -23,7 +23,7 @@ export class ClientsListComponent implements OnInit {
         this.clients = data;
         if (this.clients.length === 0) {
           // If no clients, navigate to client-add
-          this.router.navigate(['/client-add']); 
+          this.router.navigate(['/clients/add']); 
         }
       },
       error => {

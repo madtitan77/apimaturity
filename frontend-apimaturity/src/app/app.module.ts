@@ -20,6 +20,7 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -38,6 +39,7 @@ export function tokenGetter() {
     HttpClientModule, BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     MatSnackBarModule,
     JwtModule.forRoot({

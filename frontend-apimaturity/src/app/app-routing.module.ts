@@ -6,8 +6,15 @@ import { ClientsListComponent } from './clients-list/clients-list.component'; //
 import { ClientAddComponent } from './client-add/client-add.component'; // Import the ClientAddComponent
 import { ClientEditComponent } from './client-edit/client-edit.component'; // Import the ClientEditComponent
 import { ClientDetailComponent } from './client-detail/client-detail.component'; // Import the ClientDetailComponent
+import { AuthGuard } from './auth.guard'; 
+
 
 const routes: Routes = [
+  {
+    path: 'protected-route',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./protected/protected.module').then(m => m.ProtectedModule)
+  },
   { path: 'clients', component: ClientsListComponent },
   { path: 'clients/add', component: ClientAddComponent },
   { path: 'clients/edit/:id', component: ClientEditComponent },

@@ -17,16 +17,19 @@ import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientAddComponent } from './client-add/client-add.component';
 import { ClientEditComponent } from './client-edit/client-edit.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './jwt.interceptor';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
-    ClientsListComponent,
-    ClientAddComponent,
-    ClientEditComponent,
-    ClientDetailComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,12 +39,17 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatSnackBarModule
-    
-
-    
+    MatSnackBarModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost'], // Your API domain
+        disallowedRoutes: ['http://example.com/examplebadroute/'],
+      },
+    }),    
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

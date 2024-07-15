@@ -5,13 +5,13 @@ import { ClientsListComponent } from '../clients-list/clients-list.component';
 import { ClientAddComponent } from '../client-add/client-add.component';
 import { ClientEditComponent } from '../client-edit/client-edit.component';
 import { ClientDetailComponent } from '../client-detail/client-detail.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input'; 
-import { MatTableModule } from '@angular/material/table';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input'; 
+import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
 
 
 

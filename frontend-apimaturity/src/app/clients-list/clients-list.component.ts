@@ -3,7 +3,7 @@ import { ClientsService } from '../clients.service';
 import { Client } from '../models/clients.model'; 
 import { Router } from '@angular/router'; 
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { MatLegacyMenuTrigger as MatMenuTrigger } from '@angular/material/legacy-menu';
 
 
 @Component({

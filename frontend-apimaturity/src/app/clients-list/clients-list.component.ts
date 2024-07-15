@@ -37,6 +37,14 @@ export class ClientsListComponent implements OnInit {
     this.editForm.patchValue(client);
   }
 
+  askToNavigate(client: Client): void {
+    const userConfirmed = window.confirm(`Do you want to look into the assessments of ${client.name} with id ${client.clientId}?`);
+    if (userConfirmed) {
+      // Navigate to the assessments page for the selected client
+      this.router.navigate([`/clients/${client.clientId}/assessments`]);
+    }
+  }
+
   save() {
     // Implement client update logic here
     this.selectedClient = null; // Deselect client after save
@@ -46,6 +54,10 @@ export class ClientsListComponent implements OnInit {
     this.clientsService.getClients().subscribe(
       (data: Client[]) => {
         this.clients = data;
+        console.log('data fetched: ', data)
+        this.clients.forEach(client => {
+          console.log(`Client ID: ${client.clientId}, Client Name: ${client.name}`);
+        });
         if (this.clients.length === 0) {
           // If no clients, navigate to client-add
           this.router.navigate(['/clients/add']); 

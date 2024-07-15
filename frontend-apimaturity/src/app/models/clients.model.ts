@@ -1,14 +1,14 @@
 
 
 export class Client {
-    client_id: number;
+    clientId: number;
     name: string;
     notes: string;
     user_id: number;
     industry: string;
 
     constructor() {
-        this.client_id = 0;
+        this.clientId = 0;
         this.name = '';
         this.notes = '';
         this.user_id = 0;

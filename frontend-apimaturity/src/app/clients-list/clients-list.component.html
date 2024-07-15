@@ -16,8 +16,24 @@
     </ng-container>
     <!-- Add other columns here -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="askToNavigate(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+      (click)="askToNavigate(row)"  
+      (contextmenu)="openContextMenu($event, menuTrigger, row)">
+    </tr>
+    <mat-menu #contextMenu="matMenu" #menuTrigger="matMenuTrigger">
+      <button mat-menu-item (click)="editClient(menuTrigger.data)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="deleteClient(menuTrigger.data)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
   </table>
+  <button mat-fab color="primary" (click)="navigateToAddClient()" aria-label="Add new client" class="add-client-fab">
+    <mat-icon>add</mat-icon>
+  </button>
   </div>
 </div>
 <!-- Edit Form (could be in a dialog or directly in the page) -->

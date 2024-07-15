@@ -3,6 +3,7 @@ import { ClientsService } from '../clients.service';
 import { Client } from '../models/clients.model'; 
 import { Router } from '@angular/router'; 
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ClientsListComponent implements OnInit {
   selectedClient: Client | null = null;
   editForm!: FormGroup;
   displayedColumns: string[] = ['name','notes','industry'];
+  currentRow: any; 
 
   constructor(
     private clientsService: ClientsService, private router: Router,
@@ -44,6 +46,34 @@ export class ClientsListComponent implements OnInit {
       this.router.navigate([`/clients/${client.clientId}/assessments`]);
     }
   }
+
+  navigateToAddClient(): void {
+    this.router.navigate(['/clients/add']);
+  }
+
+  editClient(client: Client) {
+    this.selectClient(client); // Assuming selectClient sets up for editing
+    // Additional logic for editing
+  }
+  
+  openContextMenu(event: MouseEvent, contextMenu: MatMenuTrigger, row: any) {
+    event.preventDefault(); // Prevent the browser context menu
+    this.currentRow  = row; // Pass the row as data to the menu
+    contextMenu.openMenu(); // Open the menu
+  }
+
+  deleteClient(client: Client) {
+    // Implement deletion logic here
+    this.clientsService.deleteClient(client.clientId).subscribe({
+      next: () => {
+        console.log('Client deleted', client);
+        this.fetchClients();
+      },
+      error: (error) => console.error('There was an error!', error)
+    });
+  }
+
+
 
   save() {
     // Implement client update logic here

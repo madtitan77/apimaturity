@@ -36,3 +36,9 @@ table.mat-table {
   text-align: center;
   margin-bottom: 20px; /* Space between title and table */
 }
+
+.add-client-fab {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+}

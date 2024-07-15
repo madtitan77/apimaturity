@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
+import { MatIconModule } from '@angular/material/icon';
 
 
 export function tokenGetter() {
@@ -38,6 +39,7 @@ export function tokenGetter() {
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatIconModule,
     MatSnackBarModule,
     JwtModule.forRoot({
       config: {

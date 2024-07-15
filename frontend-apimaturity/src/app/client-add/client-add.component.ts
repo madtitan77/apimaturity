@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from '../models/clients.model'; 
 import { ClientsService } from '../clients.service'; 
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-client-add',
@@ -13,7 +14,8 @@ export class ClientAddComponent implements OnInit {
 
   constructor(
       private clientsService: ClientsService,
-      private titleService: Title
+      private titleService: Title,
+      private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class ClientAddComponent implements OnInit {
       next: (client) => {
         console.log('Client added', client);
         this.client = new Client(); // Reset the form
+        this.router.navigate(['/clients/']);
       },
       error: (error) => console.error('There was an error!', error)
     });

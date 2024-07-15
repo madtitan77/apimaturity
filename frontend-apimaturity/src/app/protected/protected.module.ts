@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input'; 
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 
@@ -28,6 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule, // Add MatInputModule here
     MatTableModule,
     ReactiveFormsModule,
+    MatIconModule, 
+    MatMenuModule, 
   ]
   
 })

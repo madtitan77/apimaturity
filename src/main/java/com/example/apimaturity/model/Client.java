@@ -42,6 +42,10 @@ public class Client {
         return industry;
     }
 
+    public String getNotes() {
+        return notes;
+    }
+
     // Please note that adding a method similar to Python's `to_dict()`
     // is strongly discouraged in Java -- please use an object mapper (Jackson) instead
 }

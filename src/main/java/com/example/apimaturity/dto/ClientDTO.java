@@ -5,6 +5,7 @@ public class ClientDTO {
     private Integer clientId;
     private String name;
     private String industry;
+    private String Notes;
     
 
    
@@ -20,6 +21,10 @@ public class ClientDTO {
 
     public String getName() {
         return name;
+    }
+
+    public String setNotes(String notes) {
+        return Notes;
     }
 
     public void setName(String name) {
@@ -40,6 +45,7 @@ public class ClientDTO {
         dto.setClientId(client.getClientId());
         dto.setName(client.getName());
         dto.setIndustry(client.getIndustry());
+        dto.setNotes(client.getNotes());
        
         return dto;
     }

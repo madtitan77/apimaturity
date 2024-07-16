@@ -16,12 +16,15 @@ export class ClientsListComponent implements OnInit {
   clients: Client[] = []; 
   selectedClient: Client | null = null;
   editForm!: FormGroup;
-  displayedColumns: string[] = ['name','notes','industry'];
+  displayedColumns: string[] = ['name','notes','industry', 'actions'];
   currentRow: any; 
 
-  @ViewChild(MatMenuTrigger) contextMenuTrigger!: MatMenuTrigger;
+  @ViewChild(MatMenuTrigger,{ static: false }) contextMenuTrigger!: MatMenuTrigger;
+
+
   constructor(
-    private clientsService: ClientsService, private router: Router,
+    private clientsService: ClientsService, 
+    private router: Router,
     private fb: FormBuilder
 
   ) { }
@@ -54,18 +57,26 @@ export class ClientsListComponent implements OnInit {
   }
 
   editClient(client: Client) {
+    console.log('Editing client', client);
     this.selectClient(client); // Assuming selectClient sets up for editing
     // Additional logic for editing
+    this.router.navigate(['/clients/add']); 
+
   }
   
-  openContextMenu(event: MouseEvent, row: any) {
+  openContextMenu(event: MouseEvent, row: any): void {
     event.preventDefault();
     this.currentRow = row;
-    this.contextMenuTrigger.openMenu();
+    if (this.contextMenuTrigger) {
+      this.contextMenuTrigger.openMenu();
+    } else {
+      console.error('ContextMenuTrigger is not available.');
+    }
   }
 
   deleteClient(client: Client) {
     // Implement deletion logic here
+    console.log('Deleting client', client);
     this.clientsService.deleteClient(client.clientId).subscribe({
       next: () => {
         console.log('Client deleted', client);

@@ -5,16 +5,13 @@ import { ClientsListComponent } from '../clients-list/clients-list.component';
 import { ClientAddComponent } from '../client-add/client-add.component';
 import { ClientEditComponent } from '../client-edit/client-edit.component';
 import { ClientDetailComponent } from '../client-detail/client-detail.component';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { FormsModule } from '@angular/forms';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input'; 
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
-import { ReactiveFormsModule } from '@angular/forms'; 
+// Updated imports for Angular 16
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
-
-
-
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -27,8 +24,8 @@ import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-m
     CommonModule,
     ProtectedRoutingModule,
     MatFormFieldModule,   
-    FormsModule, // Add FormsModule here
-    MatInputModule, // Add MatInputModule here
+    FormsModule,
+    MatInputModule,
     MatTableModule,
     ReactiveFormsModule,
     MatIconModule, 
@@ -36,4 +33,4 @@ import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-m
   ]
   
 })
-export class ProtectedModule { }
+export class ProtectedModule {/*...*/}

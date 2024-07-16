@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientsService } from '../clients.service'; 
 import { Client } from '../models/clients.model'; 
 import { Router } from '@angular/router'; 
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatLegacyMenuTrigger as MatMenuTrigger } from '@angular/material/legacy-menu';
+import { MatMenuTrigger } from '@angular/material/menu';
+
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ClientsListComponent implements OnInit {
   displayedColumns: string[] = ['name','notes','industry'];
   currentRow: any; 
 
+  @ViewChild(MatMenuTrigger) contextMenuTrigger!: MatMenuTrigger;
   constructor(
     private clientsService: ClientsService, private router: Router,
     private fb: FormBuilder
@@ -56,10 +58,10 @@ export class ClientsListComponent implements OnInit {
     // Additional logic for editing
   }
   
-  openContextMenu(event: MouseEvent, contextMenu: MatMenuTrigger, row: any) {
-    event.preventDefault(); // Prevent the browser context menu
-    this.currentRow  = row; // Pass the row as data to the menu
-    contextMenu.openMenu(); // Open the menu
+  openContextMenu(event: MouseEvent, row: any) {
+    event.preventDefault();
+    this.currentRow = row;
+    this.contextMenuTrigger.openMenu();
   }
 
   deleteClient(client: Client) {

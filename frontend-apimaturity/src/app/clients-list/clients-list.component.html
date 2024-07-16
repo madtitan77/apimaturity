@@ -18,14 +18,14 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
       (click)="askToNavigate(row)"  
-      (contextmenu)="openContextMenu($event, menuTrigger, row)">
+      (contextmenu)="openContextMenu($event, row)">
     </tr>
-    <mat-menu #contextMenu="matMenu" #menuTrigger="matMenuTrigger">
-      <button mat-menu-item (click)="editClient(menuTrigger.data)">
+    <mat-menu #contextMenu="matMenu">
+      <button mat-menu-item (click)="editClient(currentRow)">
         <mat-icon>edit</mat-icon>
         <span>Edit</span>
       </button>
-      <button mat-menu-item (click)="deleteClient(menuTrigger.data)">
+      <button mat-menu-item (click)="deleteClient(currentRow)">
         <mat-icon>delete</mat-icon>
         <span>Delete</span>
       </button>

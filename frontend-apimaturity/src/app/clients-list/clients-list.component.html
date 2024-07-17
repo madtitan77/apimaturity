@@ -18,11 +18,16 @@
       <td mat-cell *matCellDef="let element">{{element.value.industry}}</td>
     </ng-container>
      <!-- Actions Column -->
+    <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element; let i = index">
-        <button mat-button (click)="editClient(element.value)">Edit</button>
-        <button mat-button (click)="deleteClient(element.value)">Delete</button>
+        <button mat-stroked-button (click)="editClient(element.value)" aria-label="Edit client" class="discrete-button">
+          <mat-icon class="small-icon">edit</mat-icon>
+        </button>
+        <button mat-stroked-button (click)="deleteClient(element.value)" aria-label="Delete client" class="discrete-button">
+          <mat-icon class="small-icon">delete</mat-icon>
+        </button>
       </td>
     </ng-container>
      <!-- Header Footer -->

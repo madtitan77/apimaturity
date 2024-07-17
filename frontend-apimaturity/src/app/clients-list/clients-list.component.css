@@ -42,3 +42,12 @@ table.mat-table {
   right: 16px;
   bottom: 16px;
 }
+.discrete-button {
+  border-color: rgba(211, 211, 211, 0.5); /* Light grey border with 50% transparency */
+  color: rgba(112, 112, 112, 0.5); /* Darker text/icon color with 50% transparency */
+  transform: scale(0.8); /* Scale down to 80% of the original size */
+}
+
+.small-icon {
+  font-size: 16px; /* Smaller icon size */
+}

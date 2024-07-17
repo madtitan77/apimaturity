@@ -4,11 +4,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.apimaturity.LoginRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -29,68 +31,46 @@ public class LoginControllerTest {
     private AuthenticationManager authenticationManager;
 
     @Test
-    public void authenticateUserTest() throws Exception {
-        // Setup test data
+    public void successfulLoginTest() throws Exception {    
+        // Setup test data for successful login
         LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUsername("testUser");
-        loginRequest.setPassword("testPass");
+        loginRequest.setUsername("validUser");
+        loginRequest.setPassword("validPass");
 
-        // Convert to JSON
-        String loginRequestJson = "{\"username\":\"user\",\"password\":\"pass\"}";
+        // Serialize loginRequest to JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String loginRequestJson = objectMapper.writeValueAsString(loginRequest);
 
-        // Setup mock authentication behavior
+        // Mock successful authentication
         Authentication auth = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
-        when(authenticationManager.authenticate(any())).thenReturn(auth); // Ensure this returns a non-null Authentication object
+        when(authenticationManager.authenticate(any())).thenReturn(auth);
 
-        // Perform POST request and assert response
-        mockMvc.perform(post("/api/apimaturity/login")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(loginRequestJson))
-                .andExpect(status().isForbidden());
-
-        // Optional: Verify interactions or assert response content
-    }
-
-
-   /*  @Test
-    public void createUserAndLoginTest() throws Exception {
-        
-        // Setup test data
-        LoginRequest createUserRequest = new LoginRequest();
-        createUserRequest.setUsername("newUser");
-        createUserRequest.setPassword("newPass");
-        // Convert to JSON
-        String createUserRequestJson = "{\"username\":\"newUser\",\"password\":\"newPass\"}";
-        // Setup mock authentication behavior
-        Authentication createAuth = new UsernamePasswordAuthenticationToken(createUserRequest.getUsername(), createUserRequest.getPassword());
-        when(authenticationManager.authenticate(any())).thenReturn(createAuth); // Ensure this returns a non-null Authentication object
-        // Perform POST request to create user
-        mockMvc.perform(post("/api/apimaturity/createUser")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(createUserRequestJson))
-                .andExpect(status().isOk());
-        
-        //getAuth();
-
-        
-    }
-
-
-    private void getAuth() throws Exception {
-        // Setup login test data
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUsername("newUser");
-        loginRequest.setPassword("newPass");
-        // Convert to JSON
-        String loginRequestJson = "{\"username\":\"newUser\",\"password\":\"newPass\"}";
-        // Setup mock authentication behavior
-        Authentication auth = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
-        when(authenticationManager.authenticate(any())).thenReturn(auth); // Ensure this returns a non-null Authentication object
-        // Perform POST request and assert response
+        // Perform POST request and expect OK status
         mockMvc.perform(post("/api/apimaturity/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(loginRequestJson))
                 .andExpect(status().isOk());
-        // Optional: Verify interactions or assert response content
-    }*/
+    }
+
+
+   @Test
+    public void unsuccessfulLoginTest() throws Exception {
+        // Setup test data for unsuccessful login
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setUsername("invalidUser");
+        loginRequest.setPassword("invalidPass");
+
+        // Serialize loginRequest to JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String loginRequestJson = objectMapper.writeValueAsString(loginRequest);
+
+        // Mock unsuccessful authentication by throwing BadCredentialsException
+        when(authenticationManager.authenticate(any())).thenThrow(new BadCredentialsException("Bad credentials"));
+
+        // Perform POST request and expect Unauthorized status
+        mockMvc.perform(post("/api/apimaturity/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(loginRequestJson))
+                .andExpect(status().isUnauthorized());
+    }
 }

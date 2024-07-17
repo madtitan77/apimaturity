@@ -37,9 +37,5 @@ public class UserController {
         }
     }
 
-    // Optional: You can also use @ExceptionHandler to handle exceptions globally for this controller
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<String> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
-        return new ResponseEntity<>("Email already exists.", HttpStatus.CONFLICT);
-    }
+    
 }

@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientsService } from '../clients.service'; 
 import { Client } from '../models/clients.model'; 
 import { Router } from '@angular/router'; 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray} from '@angular/forms';
 import { MatMenuTrigger } from '@angular/material/menu';
+
 
 
 
@@ -13,11 +14,13 @@ import { MatMenuTrigger } from '@angular/material/menu';
   styleUrls: ['./clients-list.component.css']
 })
 export class ClientsListComponent implements OnInit {
-  clients: Client[] = []; 
+  Clients: Client[] = []; 
   selectedClient: Client | null = null;
   editForm!: FormGroup;
-  displayedColumns: string[] = ['name','notes','industry', 'actions'];
+  //displayedColumns: string[] = ['name','notes','industry','actions'];
+  displayedColumns: string[] = ['name','notes','industry','actions'];
   currentRow: any; 
+  clientsForm!: FormGroup;
 
   @ViewChild(MatMenuTrigger,{ static: false }) contextMenuTrigger!: MatMenuTrigger;
 
@@ -26,8 +29,11 @@ export class ClientsListComponent implements OnInit {
     private clientsService: ClientsService, 
     private router: Router,
     private fb: FormBuilder
-
-  ) { }
+  ) { 
+      this.clientsForm = this.fb.group({
+      clientsFormArray: this.fb.array([])
+    });
+  }
 
   ngOnInit(): void {
     this.fetchClients();
@@ -37,12 +43,62 @@ export class ClientsListComponent implements OnInit {
       industry: [''],
       // Initialize other form controls
     });
+    this.loadClients()
   }
 
   selectClient(client: Client) {
     this.selectedClient = client;
     this.editForm.patchValue(client);
   }
+
+  loadClients() {
+    console.log(`Loading clients with array ${this.Clients}`);
+    const clientFormGroups = this.Clients.map(client => this.fb.group({
+      clientId: [client.clientId],
+      name: [client.name],
+      notes: [client.notes],
+      industry: [client.industry],
+      user_id: [client.user_id], // Assuming you want to include user_id in the form
+      isEditMode: [false] // Track edit mode for each client
+    }));
+    //debug the form groups
+     (clientFormGroups).forEach(clientFormGroup => {
+          console.log(`Client form group value name: ${clientFormGroup.value.name}`);
+          console.log(`Client form group value isEditMode: ${clientFormGroup.value.isEditMode}`);
+        });
+    
+    
+    
+      // Set the 'clientsFormArray' form array control with the mapped form groups
+      this.clientsForm.setControl('clientsFormArray', this.fb.array(clientFormGroups));
+      //print the form array
+      console.log(`Form array value: ${this.clientsForm.value}`);
+
+    
+
+      
+     
+  }
+
+  get clientsFormArray(): FormArray {
+    return this.clientsForm.get('clientsFormArray') as FormArray;
+  }
+
+
+  toggleEditMode(index: number) {
+    const client = this.clientsFormArray.at(index);
+    const isEditModeControl = client.get('isEditMode');
+    if (isEditModeControl) {
+      isEditModeControl.setValue(!isEditModeControl.value);
+    }
+  }
+
+  saveClient(index: number) {
+    const client = this.clientsFormArray.at(index).value;
+    // Implement save logic here, possibly calling a service
+    this.toggleEditMode(index); // Turn off edit mode after save
+  }
+
 
   askToNavigate(client: Client): void {
     const userConfirmed = window.confirm(`Do you want to look into the assessments of ${client.name} with id ${client.clientId}?`);
@@ -96,14 +152,17 @@ export class ClientsListComponent implements OnInit {
   fetchClients(): void {
     this.clientsService.getClients().subscribe(
       (data: Client[]) => {
-        this.clients = data;
-        console.log('data fetched: ', data)
-        this.clients.forEach(client => {
+        this.Clients = data; 
+        console.log('data fetched: ', data);
+        this.Clients.forEach(client => {
           console.log(`Client ID: ${client.clientId}, Client Name: ${client.name}`);
         });
-        if (this.clients.length === 0) {
-          // If no clients, navigate to client-add
-          this.router.navigate(['/clients/add']); 
+        console.log(`Clients array lengths: ${this.Clients.length}`);
+        if (this.Clients.length === 0) {
+          this.router.navigate(['/clients/add']);
+        } else {
+          console.log(`Populating form with array : ${this.Clients}`);
+          this.loadClients(); 
         }
       },
       error => {
@@ -111,6 +170,7 @@ export class ClientsListComponent implements OnInit {
       }
     );
   }
+  
 
   // Implement other CRUD operations as methods here, similar to fetchClients
 }

@@ -18,6 +18,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    public void deleteClient(Integer clientId) {
+    clientRepo.deleteById(clientId);
+    }
+
+    @Override
     public Client saveClient(Client client) {   
         return clientRepo.save(client);
     }

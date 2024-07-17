@@ -7,4 +7,5 @@ import com.example.apimaturity.model.Client;
 public interface ClientService {
     List<Client> findAllClients();
     Client saveClient(Client client);
+    void deleteClient(Integer clientId);
 }

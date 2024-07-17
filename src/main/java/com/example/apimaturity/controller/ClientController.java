@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping; // Add this import statement
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity; // Add this import statement
@@ -43,6 +44,20 @@ public class ClientController {
     public ResponseEntity<?> deleteClient(@PathVariable Integer clientId) { 
         clientService.deleteClient(clientId);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{clientId}")
+    public ResponseEntity<Client> updateClient(@PathVariable Integer clientId, @RequestBody Client clientDetails) {
+        Client client = clientService.findClientById(clientId);
+        if (client == null) {
+            return ResponseEntity.notFound().build();
+        }
+        // Assuming Client class has setters for updating fields
+        client.setName(clientDetails.getName());
+        client.setIndustry(clientDetails.getIndustry());
+        client.setNotes(clientDetails.getNotes());
+        final Client updatedClient = clientService.saveClient(client);
+        return ResponseEntity.ok(updatedClient);
     }
     
 }

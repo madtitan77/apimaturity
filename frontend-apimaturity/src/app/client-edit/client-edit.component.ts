@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   })
   export class ClientEditComponent implements OnInit {
     editForm!: FormGroup;
+    clientId!: number
 
     constructor(
       private formBuilder: FormBuilder,
@@ -19,8 +20,10 @@ import { ActivatedRoute } from '@angular/router';
       { }
 
     ngOnInit(): void {
+      this.clientId = this.router.snapshot.params['id']; 
       this.fetchClient();
       this.editForm = this.formBuilder.group({
+        clientId: [this.clientId], 
         name: [''],
         notes: [''],
         industry: ['']
@@ -30,7 +33,7 @@ import { ActivatedRoute } from '@angular/router';
     save() {
       if (this.editForm.valid) {
         this.clientsService.updateClient(this.editForm.value).subscribe(() => {
-          // Handle success, e.g., redirect or show a message
+          // TODO Handle success, e.g., redirect or show a message
         });
       }
     }

@@ -46,6 +46,19 @@ public class Client {
         return notes;
     }
 
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+    
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+    
     // Please note that adding a method similar to Python's `to_dict()`
     // is strongly discouraged in Java -- please use an object mapper (Jackson) instead
 }

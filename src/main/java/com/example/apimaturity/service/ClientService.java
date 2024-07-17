@@ -8,4 +8,6 @@ public interface ClientService {
     List<Client> findAllClients();
     Client saveClient(Client client);
     void deleteClient(Integer clientId);
+    public Client findClientById(Integer clientId);
+
 }

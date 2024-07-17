@@ -18,6 +18,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    public Client findClientById(Integer clientId) {
+        return clientRepo.findById(clientId).orElse(null);
+    }
+
+    @Override
     public void deleteClient(Integer clientId) {
     clientRepo.deleteById(clientId);
     }

@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'clients/:id', component: ClientDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'clients/:id/edit', component: ClientEditComponent }
 ];
 
 @NgModule({

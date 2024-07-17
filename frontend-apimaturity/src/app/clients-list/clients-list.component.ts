@@ -96,7 +96,7 @@ export class ClientsListComponent implements OnInit {
   saveClient(index: number) {
     const client = this.clientsFormArray.at(index).value;
     // Implement save logic here, possibly calling a service
-    this.toggleEditMode(index); // Turn off edit mode after save
+    this.toggleEditMode(index); 
   }
 
 
@@ -113,11 +113,7 @@ export class ClientsListComponent implements OnInit {
   }
 
   editClient(client: Client) {
-    console.log('Editing client', client);
-    this.selectClient(client); // Assuming selectClient sets up for editing
-    // Additional logic for editing
-    this.router.navigate(['/clients/add']); 
-
+    this.router.navigate(['/clients', client.clientId, 'edit']);
   }
   
   openContextMenu(event: MouseEvent, row: any): void {

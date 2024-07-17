@@ -1,0 +1,53 @@
+/* Ensure the table layout is fixed */
+/* Adjust the table width and center it */
+table.mat-table {
+    width: 90%; /* Adjust this value as needed */
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+  }
+  
+  /* Set a minimum width for all table headers and cells */
+  .mat-header-cell, .mat-cell {
+    min-width: 120px; /* Adjust based on your needs */
+    overflow: hidden; /* Prevents content from overflowing */
+    text-overflow: ellipsis; /* Adds an ellipsis for overflowed content */
+    white-space: nowrap; /* Keeps the content on a single line */
+  }
+  
+  /* Adjustments for specific columns */
+  .col-name th, .col-name td {
+    width: 200px; /* Fixed width */
+  }
+  
+  .col-notes th, .col-notes td {
+    width: 500px; /* Increased width for notes */
+  }
+  
+  .col-industry th, .col-industry td {
+    width: 250px; /* Adjusted width for industry */
+  }
+  .table-container {
+    width: 90%; /* Match the table width for alignment */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .table-title {
+    text-align: center;
+    margin-bottom: 20px; /* Space between title and table */
+  }
+  
+  .add-client-fab {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+  }
+  .discrete-button {
+    border-color: rgba(211, 211, 211, 0.5); /* Light grey border with 50% transparency */
+    color: rgba(112, 112, 112, 0.5); /* Darker text/icon color with 50% transparency */
+    transform: scale(0.8); /* Scale down to 80% of the original size */
+  }
+  
+  .small-icon {
+    font-size: 16px; /* Smaller icon size */
+  }

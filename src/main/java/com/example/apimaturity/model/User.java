@@ -1,6 +1,9 @@
 package com.example.apimaturity.model;
 import jakarta.persistence.*;
 import java.util.Set;
+import com.example.apimaturity.security.Role;
+
+
 
 
 @Entity
@@ -23,6 +26,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserClient> userClients;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role.RoleType role;
+
     // getters and setters for the above fields
     public String getEmail() {
         return this.email;
@@ -38,6 +45,18 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role.RoleType getRole() {
+        return role;
+    }
+
+    public void setRole(String roleName) {
+        if (Role.RoleType.isValidRole(roleName)) {
+            this.role = Role.RoleType.valueOf(roleName);
+        } else {
+            this.role = Role.RoleType.USER;
+        }
     }
 
 

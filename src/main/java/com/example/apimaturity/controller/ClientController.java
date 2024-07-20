@@ -11,20 +11,32 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity; // Add this import statement
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+
 import java.util.List; // Add this import statement
 import com.example.apimaturity.service.ClientService;
 import com.example.apimaturity.model.Client; // Add this import statement
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @RestController
 @RequestMapping("/api/apimaturity/clients")
 public class ClientController {
+    private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     @Autowired
     private ClientService clientService;
 
     @GetMapping
-    public ResponseEntity<List<Client>> getAllClients() {
-        List<Client> clients = clientService.findAllClients();
+    public ResponseEntity<List<Client>> getClients(Authentication authentication) {
+        
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        logger.info("User {}", userDetails.getUsername());
+        String role = userDetails.getAuthorities().stream().findFirst().get().getAuthority();
+        logger.info("User role: {}", role);
+        List<Client> clients = clientService.findClientsForUser(userDetails.getUsername(), role);
         return ResponseEntity.ok(clients);
     }
 

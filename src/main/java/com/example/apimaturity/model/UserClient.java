@@ -1,11 +1,11 @@
 package com.example.apimaturity.model;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user_client")
 @IdClass(UserClientId.class)
 public class UserClient {
-
     @Id
     @Column(name = "user_id")
     private Integer userId;
@@ -30,9 +30,7 @@ public class UserClient {
 
 @Embeddable
 class UserClientId {
- 
     private Integer userId;
-
     private Integer clientId;
 
     // getters and setters

@@ -4,4 +4,4 @@ The clients returned by the call to /api/apimaturity/clients* should be filtered
 - If the user has the role admin all clients should be returned
 - if the user has the role user 
 --the clients with user_id (in clients table) equals to the user_id of the requesting user should be returned
---Also the clients that their client_id is found in the 
+--The system should also look into the  UserPermission table to find which clients the user has also access to. This will be indicated by and entry with the user_id and the client_id.

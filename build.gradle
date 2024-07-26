@@ -39,3 +39,12 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+test {
+    // Configure test logging to show standard out and standard error on the console
+    testLogging {
+        // Ensure that the output of all tests, including passed ones, is shown
+        showStandardStreams = true
+        events "passed", "skipped", "failed"
+    }
+}

@@ -6,6 +6,7 @@ import { ClientsListComponent } from './clients-list/clients-list.component'; //
 import { ClientAddComponent } from './client-add/client-add.component'; // Import the ClientAddComponent
 import { ClientEditComponent } from './client-edit/client-edit.component'; // Import the ClientEditComponent
 import { ClientDetailComponent } from './client-detail/client-detail.component'; // Import the ClientDetailComponent
+import { AssessmentGroupAddComponent } from './assessment-group-add/assessment-group-add.component';
 import { AuthGuard } from './auth.guard'; 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
-  { path: 'clients/:id/edit', component: ClientEditComponent }
+  { path: 'clients/:id/edit', component: ClientEditComponent },
+  {path: 'clients/:id/assessment-group/add', component: AssessmentGroupAddComponent }
 ];
 
 @NgModule({

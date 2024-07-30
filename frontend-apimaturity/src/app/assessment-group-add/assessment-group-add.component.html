@@ -1,0 +1,16 @@
+<div class="client-add-wrapper">
+    <h2>New Assessment Group for {{clientName}}</h2>
+    <form (ngSubmit)="addAssessmentGroup()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="assessmentGroup.name" name="name" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Objective</mat-label>
+        <input matInput [(ngModel)]="assessmentGroup.objective" name="objective">
+      </mat-form-field>
+      <mat-error *ngIf="errorOccurred">{{errorMessage}}</mat-error> 
+      <button mat-raised-button color="primary" type="submit" [disabled]="errorOccurred">Add Assessment Group</button>
+    </form>
+  </div>

@@ -22,12 +22,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ClientsService } from './clients.service';
 
+import { AssessmentGroupService } from './assessmentGroup.service';
+import { AssessmentGroupAddComponent } from './assessment-group-add/assessment-group-add.component';
+
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'clients', component: ClientsService }, // Assuming you have a ClientsComponent
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login by default
   { path: 'register', component: RegisterComponent },
+  { path: 'assessment-group', component: AssessmentGroupService }
   // Add other routes here
 ];
 
@@ -39,7 +44,8 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AssessmentGroupAddComponent
   ],
   imports: [
     BrowserModule,

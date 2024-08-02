@@ -30,13 +30,16 @@ export class AssessmentGroupAddComponent implements OnInit {
   }
 
   addAssessmentGroup(): void {
-    this.assessmentGroupService.createAssessmentGroup(this.assessmentGroup).subscribe({
+    const clientId = +(this.route.snapshot.paramMap.get('id') ?? 0);
+    this.assessmentGroupService.createAssessmentGroup(clientId,this.assessmentGroup).subscribe({
       next: (assessmentGroup) => {
         console.log('Assessment Group added', assessmentGroup);
         this.assessmentGroup = new AssessmentGroup(); 
         this.router.navigate(['/assessment-groups/']);
       },
-      error: (error) => console.error('There was an error!', error)
+      error: (err) => {
+        this.handleError(err,'assessment');
+      }
     });
   }
 
@@ -49,6 +52,7 @@ export class AssessmentGroupAddComponent implements OnInit {
         next: (client) => {
           if (client) {
             this.clientName = client.name;
+            //this.assessmentGroup.clientId = client.clientId;
             this.errorOccurred = false; // Reset error flag on successful response
           } else {
             console.error('Client not found');
@@ -57,19 +61,29 @@ export class AssessmentGroupAddComponent implements OnInit {
           }
         },
         error: (err) => {
-          console.error('An error occurred:', err.message);
-          if (err.status === 403) {
-            this.errorOccurred = true;
-            this.errorMessage = 'Access denied. You do not have permission to view this client.';
-          } else if (err.status === 404) {
-            this.errorOccurred = true;
-            this.errorMessage = 'Client not found';
-          } else {
-            this.errorOccurred = true;
-            this.errorMessage = 'An unexpected error occurred.';
-          }
+          this.handleError(err, 'client');
         }
       });
     }
   }
+
+
+
+  handleError(err: any, message: string): void {
+    console.error('An error occurred:', err.message);
+    if (err.status === 403) {
+      this.errorOccurred = true;
+      this.errorMessage = `Access denied. You do not have permission to view this ${message}.`;
+    } else if (err.status === 404) {
+      this.errorOccurred = true;
+      this.errorMessage = `${message} not found`;
+    } else if (err.status === 409) {
+      this.errorOccurred = true;
+      this.errorMessage = `${message} already exists`;
+    } else {
+      this.errorOccurred = true;
+      this.errorMessage = 'An unexpected error occurred.';
+    }
+  }
+
 }

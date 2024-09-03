@@ -7,27 +7,37 @@ import { AssessmentGroup } from './models/assessment-group.model';
   providedIn: 'root'
 })
 export class AssessmentGroupService {
-  private apiUrl = 'http://localhost:8080/api/apimaturity/assessment-group';
+  private baseUrl = 'http://localhost:8080/api/apimaturity/clients';
 
   constructor(private http: HttpClient) { }
 
-  getAssessmentGroups(): Observable<AssessmentGroup[]> {
-    return this.http.get<AssessmentGroup[]>(this.apiUrl);
+  getAssessmentGroups(clientId: number): Observable<AssessmentGroup[]> {
+    const url = `${this.baseUrl}/${clientId}/assessment-groups/`;
+    return this.http.get<AssessmentGroup[]>(url);
   }
 
-  getAssessmentGroupById(id: number): Observable<AssessmentGroup> {
-    return this.http.get<AssessmentGroup>(`${this.apiUrl}/${id}`);
+  getAssessmentGroupById(clientId: number, id: number): Observable<AssessmentGroup> {
+    const url = `${this.baseUrl}/${clientId}/assessment-groups/${id}`;
+    return this.http.get<AssessmentGroup>(url);
   }
 
-  createAssessmentGroup(assessmentGroup: AssessmentGroup): Observable<AssessmentGroup> {
-    return this.http.post<AssessmentGroup>(this.apiUrl, assessmentGroup);
+  createAssessmentGroup(clientId: number, assessmentGroup: AssessmentGroup): Observable<AssessmentGroup> {
+    const url = `${this.baseUrl}/${clientId}/assessment-groups/`;
+    assessmentGroup.setClientId(clientId);
+    
+    // Destructure the assessmentGroup to exclude assessmentNumber and use the rest for the new object
+    const { assessmentNumber, ...assessmentGroupWithoutNumber } = assessmentGroup;
+    
+    return this.http.post<AssessmentGroup>(url, assessmentGroupWithoutNumber);
   }
 
-  updateAssessmentGroup(assessmentGroup: AssessmentGroup): Observable<AssessmentGroup> {
-    return this.http.put<AssessmentGroup>(`${this.apiUrl}/${assessmentGroup.assessmentNumber}`, assessmentGroup);
+  updateAssessmentGroup(clientId: number, assessmentGroup: AssessmentGroup): Observable<AssessmentGroup> {
+    const url = `${this.baseUrl}/${clientId}/assessment-groups/${assessmentGroup.assessmentNumber}`;
+    return this.http.put<AssessmentGroup>(url, assessmentGroup);
   }
 
-  deleteAssessmentGroup(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  deleteAssessmentGroup(clientId: number, id: number): Observable<any> {
+    const url = `${this.baseUrl}/${clientId}/assessment-groups/${id}`;
+    return this.http.delete(url);
   }
 }

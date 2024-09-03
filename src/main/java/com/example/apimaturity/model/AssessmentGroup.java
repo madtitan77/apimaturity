@@ -2,12 +2,13 @@ package com.example.apimaturity.model;
 
 import jakarta.persistence.*;
 
-
 @Entity
-@Table(name = "assessment_groups")
+@Table(name = "assessment_groups", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"client_id", "name"})
+})
 public class AssessmentGroup {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "assessment_number")
     private Integer assessmentNumber;
 
@@ -17,7 +18,6 @@ public class AssessmentGroup {
     @Column(name = "user_id")
     private Integer userId;
 
-    @Lob
     @Column(name = "objective")
     private String objective;
 
@@ -32,7 +32,7 @@ public class AssessmentGroup {
     @JoinColumn(name="client_id", insertable = false, updatable = false)
     private Client client;
 
-    // getters and setters for all these fields
+    // getters and setters 
     public void setAssessmentNumber(Integer assessmentNumber) {
         this.assessmentNumber = assessmentNumber;
     }

@@ -51,7 +51,9 @@ public class ClientController {
 
     @PostMapping
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
+        logger.info("Creating Client: {}", client);
         Client savedClient = clientService.saveClient(client);
+        logger.info("Created Client: {}", savedClient);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
     }
     

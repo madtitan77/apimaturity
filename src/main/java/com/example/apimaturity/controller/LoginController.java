@@ -27,6 +27,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+        //log with debug the request body
+        logger.debug("Login request for : username={}", loginRequest.getUsername());
         logger.info("Attempting to authenticate user: {}", loginRequest.getUsername());
 
         try {
@@ -39,7 +41,7 @@ public class LoginController {
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
             
-
+            
             String jwt = jwtUtils.generateJwtToken(authentication);
 
             logger.info("User {} authenticated successfully", loginRequest.getUsername());

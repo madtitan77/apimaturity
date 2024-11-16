@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import java.util.List; // Add this import statement
 import com.example.apimaturity.service.ClientService;
 import com.example.apimaturity.model.Client; // Add this import statement
+import com.example.apimaturity.dto.ClientDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,8 +51,11 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
+    public ResponseEntity<Client> createClient(@RequestBody ClientDTO clientDTO) {
+        logger.info("Creating Client: {}", clientDTO);
+        Client client = clientDTO.toEntity();
         Client savedClient = clientService.saveClient(client);
+        logger.info("Created Client: {}", savedClient);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
     }
     
@@ -62,16 +66,10 @@ public class ClientController {
     }
 
     @PutMapping("/{clientId}")
-    public ResponseEntity<Client> updateClient(@PathVariable Integer clientId, @RequestBody Client clientDetails) {
-        Client client = clientService.findClientById(clientId);
-        if (client == null) {
-            return ResponseEntity.notFound().build();
-        }
-        // Assuming Client class has setters for updating fields
-        client.setName(clientDetails.getName());
-        client.setIndustry(clientDetails.getIndustry());
-        client.setNotes(clientDetails.getNotes());
-        final Client updatedClient = clientService.saveClient(client);
+    public ResponseEntity<Client> updateClient(@PathVariable Integer clientId, @RequestBody ClientDTO clientDTO) {
+        Client client = clientDTO.toEntity();
+        client.setClientId(clientId);
+        Client updatedClient = clientService.updateClient(client);
         return ResponseEntity.ok(updatedClient);
     }
     

@@ -49,4 +49,17 @@ public class ClientDTO {
        
         return dto;
     }
+
+    public Client toEntity() {
+        Client client = new Client();
+        client.setClientId(this.clientId);
+        client.setName(this.name);
+        client.setIndustry(this.industry);
+        client.setNotes(this.Notes);
+        return client;
+    }
+
+    public Object getNotes() {
+        return this.Notes;
+    }
 }

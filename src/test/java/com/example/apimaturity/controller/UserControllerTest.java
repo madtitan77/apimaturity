@@ -1,6 +1,6 @@
 package com.example.apimaturity.controller;
 
-import com.example.apimaturity.dto.UserCreationDTO;
+import com.example.apimaturity.dto.UserDTO;
 import com.example.apimaturity.model.User;
 import com.example.apimaturity.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,7 +47,7 @@ public class UserControllerTest {
 
     @Test
     public void testCreateUserWithPostRequest() throws Exception {
-        UserCreationDTO userCreationDTO = new UserCreationDTO();
+        UserDTO userCreationDTO = new UserDTO();
         userCreationDTO.setEmail("testuser@example.com");
         userCreationDTO.setPassword("password");
 
@@ -55,7 +55,7 @@ public class UserControllerTest {
         user.setEmail("testuser@example.com");
         user.setPassword("password");
 
-        Mockito.when(userService.createUser(Mockito.any(UserCreationDTO.class))).thenReturn(user);
+        Mockito.when(userService.createUser(Mockito.any(User.class))).thenReturn(user);
 
         String userCreationDTOJson = objectMapper.writeValueAsString(userCreationDTO);
         logger.debug("UserCreationDTO JSON: " + userCreationDTOJson);

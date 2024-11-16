@@ -4,14 +4,12 @@ package com.example.apimaturity.controller;
 import com.example.apimaturity.dto.ClientDTO;
 import com.example.apimaturity.model.Client;
 import com.example.apimaturity.service.ClientService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -22,6 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
@@ -37,9 +36,6 @@ class ClientControllerTest {
 
     @InjectMocks
     private ClientController clientController;
-
-     @Autowired
-    private ObjectMapper objectMapper;
 
     @BeforeEach
     void setUp() {
@@ -75,12 +71,54 @@ class ClientControllerTest {
         // Perform POST request to create client
         mockMvc.perform(post("/api/apimaturity/clients")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\":\"" + clientDTO.getName() + "\",\"industry\":\"" + clientDTO.getIndustry() + "\",\"notes\":\"" + clientDTO.getNotes() + "\"}")
+                        .content("{\"name\":\"" + clientDTO.getName() + "\",\"industry\":\"" 
+                                + clientDTO.getIndustry() + "\",\"notes\":\"" 
+                                + clientDTO.getNotes() + "\"}"
+                                )
                         .principal(authentication))
                         .andExpect(status().isCreated())
                         .andExpect(jsonPath("$.clientId").value(1))
                         .andExpect(jsonPath("$.name").value(clientDTO.getName()))
                         .andExpect(jsonPath("$.industry").value(clientDTO.getIndustry()))
                         .andExpect(jsonPath("$.notes").value(clientDTO.getNotes()));
+    }
+
+    @Test
+    void testUpdateClient() throws Exception {
+
+        // Create ClientDTO object
+        ClientDTO clientDTO = new ClientDTO();
+        clientDTO.setName("Updated Client");
+        clientDTO.setIndustry("Updated Industry");
+        clientDTO.setNotes("Updated Notes");
+
+        UserDetails userDetails = User.withUsername("testuser")
+                .password("password")
+                .authorities("ROLE_USER")
+                .build();
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+
+        // Mock client service
+        Client client = new Client();
+        client.setClientId(1);
+        client.setName("Updated Client");
+        client.setIndustry("Updated Industry");
+        client.setNotes("Updated Notes");
+
+        when(clientService.updateClient(any(Client.class))).thenReturn(client);
+
+        // Perform PUT request to update client
+        mockMvc.perform(put("/api/apimaturity/clients/1")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content("{\"name\":\"" + clientDTO.getName() + "\",\"industry\":\"" 
+                + clientDTO.getIndustry() + "\",\"notes\":\"" 
+                + clientDTO.getNotes() + "\"}"
+                )
+                .principal(authentication))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.clientId").value(1))
+                .andExpect(jsonPath("$.name").value(clientDTO.getName()))
+                .andExpect(jsonPath("$.industry").value(clientDTO.getIndustry()))
+                .andExpect(jsonPath("$.notes").value(clientDTO.getNotes()));
     }
 }

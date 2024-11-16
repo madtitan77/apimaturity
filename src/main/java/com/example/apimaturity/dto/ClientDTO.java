@@ -5,7 +5,7 @@ public class ClientDTO {
     private Integer clientId;
     private String name;
     private String industry;
-    private String Notes;
+    private String notes;
     
 
    
@@ -23,8 +23,8 @@ public class ClientDTO {
         return name;
     }
 
-    public String setNotes(String notes) {
-        return Notes;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public void setName(String name) {
@@ -55,11 +55,11 @@ public class ClientDTO {
         client.setClientId(this.clientId);
         client.setName(this.name);
         client.setIndustry(this.industry);
-        client.setNotes(this.Notes);
+        client.setNotes(this.notes);
         return client;
     }
 
     public Object getNotes() {
-        return this.Notes;
+        return this.notes;
     }
 }

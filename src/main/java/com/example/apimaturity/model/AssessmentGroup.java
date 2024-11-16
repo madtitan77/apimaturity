@@ -18,7 +18,7 @@ public class AssessmentGroup {
     private Integer userId;
 
     @Lob
-    @Column(name = "objective")
+    @Column(name = "objective",columnDefinition = "TEXT")
     private String objective;
 
     @Column(name = "name")

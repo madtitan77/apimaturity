@@ -30,6 +30,9 @@ public class User {
     @Column(name = "role")
     private Role.RoleType role;
 
+    @Column(name = "name")
+    private String name;
+
     // getters and setters for the above fields
     public String getEmail() {
         return this.email;
@@ -43,6 +46,12 @@ public class User {
         return this.password;
     }
 
+    public Integer getId() {
+        return this.id;
+    }
+
+
+    
     public void setPassword(String password) {
         this.password = password;
     }
@@ -59,5 +68,16 @@ public class User {
         }
     }
 
+    public void setId(Integer userId) {
+        this.id = userId;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }

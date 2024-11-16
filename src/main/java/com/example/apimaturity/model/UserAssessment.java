@@ -20,7 +20,7 @@ public class UserAssessment {
     private Integer aiRating;
 
     @Lob
-    @Column(name = "observation")
+    @Column(name = "observation", columnDefinition = "TEXT")
     private String observation;
 
     @Column(name = "assessment_number")

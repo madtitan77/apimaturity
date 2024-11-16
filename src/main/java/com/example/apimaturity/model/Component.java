@@ -19,11 +19,11 @@ public class Component {
     private Integer dimensionId;
 
     @Lob
-    @Column(name = "definition")
+    @Column(name = "definition" , columnDefinition = "TEXT")
     private String definition;
 
     @Lob
-    @Column(name = "explanation")
+    @Column(name = "explanation", columnDefinition = "TEXT")
     private String explanation;
 
     @ManyToOne

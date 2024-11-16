@@ -19,7 +19,8 @@ public class Client {
     private String industry;
     
     @Lob
-    @Column(name = "notes")
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
     
     @ManyToOne
@@ -46,6 +47,9 @@ public class Client {
         return notes;
     }
 
+    public User getUser() {
+        return user;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -58,7 +62,18 @@ public class Client {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     
+    public void setClientId(Integer clientId) {
+
+        this.clientId = clientId;
+
+    }
+
+
     // Please note that adding a method similar to Python's `to_dict()`
     // is strongly discouraged in Java -- please use an object mapper (Jackson) instead
 }

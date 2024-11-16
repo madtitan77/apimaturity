@@ -9,8 +9,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.MockMvc;
-
-import com.example.apimaturity.Application;
 import com.example.apimaturity.LoginRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

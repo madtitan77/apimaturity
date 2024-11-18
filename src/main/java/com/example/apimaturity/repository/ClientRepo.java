@@ -16,10 +16,4 @@ public interface ClientRepo extends JpaRepository<Client, Integer> {
     List<Client> findAll();
 
     List<Client> findByUser(@Param("user") User user);
-
-    @Query("SELECT up.client FROM UserPermission up WHERE up.user.email = :username")
-    List<Client> findClientsByUserPermission(@Param("username") String username);
-
-    @Query("SELECT c FROM Client c JOIN c.user u WHERE u.email = :username")
-    List<Client> findByUser(@Param("username") String username);
 }

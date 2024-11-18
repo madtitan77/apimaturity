@@ -16,7 +16,10 @@ import org.springframework.security.core.Authentication;
 
 import java.util.List; // Add this import statement
 import com.example.apimaturity.service.ClientService;
+import com.example.apimaturity.service.UserService;
 import com.example.apimaturity.model.Client; // Add this import statement
+import com.example.apimaturity.model.User;
+import com.example.apimaturity.dto.UserDTO;
 import com.example.apimaturity.dto.ClientDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,47 +33,77 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping
     public ResponseEntity<List<Client>> getClients(Authentication authentication) {
-        
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        logger.info("User {}", userDetails.getUsername());
-        String role = userDetails.getAuthorities().stream().findFirst().get().getAuthority();
-        logger.info("User role: {}", role);
-        List<Client> clients = clientService.findClientsForUser(userDetails.getUsername(), role);
+        User user = getUserFromAuthentication(authentication);
+        List<Client> clients = clientService.findClientsUserHasAccessTo(user);
         return ResponseEntity.ok(clients);
     }
 
     @GetMapping("/{clientId}")
-    public ResponseEntity<?> getClientById(@PathVariable Integer clientId) {
+    public ResponseEntity<?> getClientById(@PathVariable Integer clientId,
+                                            Authentication authentication
+    ) {
+        User user = getUserFromAuthentication(authentication);
         Client client = clientService.findClientById(clientId);
-        if (client == null) {
+        if (client == null || !clientService.userHasAccessToClient(user, client)) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(client);
     }
 
     @PostMapping
-    public ResponseEntity<Client> createClient(@RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<Client> createClient(@RequestBody ClientDTO clientDTO,
+                                                Authentication authentication ) {
+
+        User user = getUserFromAuthentication(authentication);
         logger.info("Creating Client: {}", clientDTO);
         Client client = clientDTO.toEntity();
+        client.setCreator(user);
         Client savedClient = clientService.saveClient(client);
         logger.info("Created Client: {}", savedClient);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
     }
     
     @DeleteMapping("/{clientId}")
-    public ResponseEntity<?> deleteClient(@PathVariable Integer clientId) { 
-        clientService.deleteClient(clientId);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> deleteClient(@PathVariable Integer clientId,
+                                             Authentication authentication )
+     { 
+        User user = getUserFromAuthentication(authentication);
+        //only the user that has created the client can delete it
+        if (user.getCreatedClients().stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
+            clientService.deleteClient(clientId);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+        
     }
 
     @PutMapping("/{clientId}")
-    public ResponseEntity<Client> updateClient(@PathVariable Integer clientId, @RequestBody ClientDTO clientDTO) {
-        Client client = clientDTO.toEntity();
-        client.setClientId(clientId);
-        Client updatedClient = clientService.updateClient(client);
-        return ResponseEntity.ok(updatedClient);
+    public ResponseEntity<Client> updateClient( @PathVariable Integer clientId, 
+                                                @RequestBody ClientDTO clientDTO,
+                                                Authentication authentication) {
+        User user = getUserFromAuthentication(authentication);
+        //only the user that has created the client can updated it
+        if (user.getCreatedClients().stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
+            Client client = clientDTO.toEntity();
+            client.setClientId(clientId);
+            Client updatedClient = clientService.updateClient(client);
+            return ResponseEntity.ok(updatedClient);
+        }
+        return ResponseEntity.notFound().build();
+
+    }
+
+    private User getUserFromAuthentication(Authentication authentication) {
+        //the username is the email of the user... confusing a bit
+        //TODO fix the username to be email to avoid confusion
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        logger.info("User {}", userDetails.getUsername());
+        return userService.findByEmail(userDetails.getUsername());
     }
     
 }

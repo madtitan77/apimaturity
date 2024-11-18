@@ -1,16 +1,32 @@
 package com.example.apimaturity.model;
-import jakarta.persistence.*;
-import java.util.Set;
+
 import com.example.apimaturity.security.Role;
+import com.example.apimaturity.security.Role.RoleType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Integer id;
 
@@ -20,22 +36,35 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<UserAssessment> userAssessments;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<UserClient> userClients;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private Role.RoleType role;
+    private Role role;
 
     @Column(name = "name")
     private String name;
 
-    // getters and setters for the above fields
+    @OneToMany(mappedBy = "creator")
+    private Set<Client> createdClients = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+        name = "user_client_access",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "client_id")
+    )
+    private Set<Client> accessibleClients = new HashSet<>();
+
+    // Getters and setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -43,41 +72,49 @@ public class User {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
-    public Integer getId() {
-        return this.id;
-    }
-
-
-    
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public Role.RoleType getRole() {
-        return role;
+    public Role getRole() {
+        return this.role;
     }
 
-    public void setRole(String roleName) {
-        if (Role.RoleType.isValidRole(roleName)) {
-            this.role = Role.RoleType.valueOf(roleName);
-        } else {
-            this.role = Role.RoleType.USER;
-        }
-    }
-
-    public void setId(Integer userId) {
-        this.id = userId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public Set<Client> getCreatedClients() {
+        return createdClients;
+    }
+
+    public void setCreatedClients(Set<Client> createdClients) {
+        this.createdClients = createdClients;
+    }
+
+    public Set<Client> getAccessibleClients() {
+        return accessibleClients;
+    }
+
+    public void setAccessibleClients(Set<Client> accessibleClients) {
+        this.accessibleClients = accessibleClients;
+    }
+
+    public boolean isAdmin() {
+
+        return this.role.getRoleType().equals(RoleType.ADMIN);
+    
+    }
+    
 }

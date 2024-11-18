@@ -40,13 +40,7 @@ public class UserDTO {
         User newUser = new User();
         newUser.setEmail(this.getEmail());
         newUser.setPassword(passwordEncoder.encode(this.getPassword()));
-        // Validate and set the role
-        if (this.getRole() != null && Role.RoleType.isValidRole(this.getRole())) {
-            newUser.setRole(this.getRole());
-        } else {
-            // Handle invalid or null role, e.g., set a default role or throw an exception
-            newUser.setRole(Role.RoleType.USER.toString());
-        }
+        newUser.setRole(new Role(this.role));
         return newUser;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.apimaturity.model;
 
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,16 +25,28 @@ public class Client {
     @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
     
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "creator_id", nullable = false)
+    private User creator;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private Set<UserClient> userClients;
+    @ManyToMany(mappedBy = "accessibleClients")
+    private Set<User> usersWithAccess = new HashSet<>();
 
     // getters and setters for all these fields
     public Integer getClientId() {
         return clientId;
+    }
+
+    public void setClientId(Integer id) {
+        this.clientId = id;
+    }
+
+    public void setCreator(User user) {
+        this.creator = user;
+    }
+
+    public User getCreator() {
+        return this.creator;
     }
 
     public String getName() {
@@ -47,10 +61,6 @@ public class Client {
         return notes;
     }
 
-    public User getUser() {
-        return user;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -63,17 +73,12 @@ public class Client {
         this.notes = notes;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public Set<User> getUsersWithAccess() {
+        return usersWithAccess;
+    }
+
+    public void setUsersWithAccess(Set<User> usersWithAccess) {
+        this.usersWithAccess = usersWithAccess;
     }
     
-    public void setClientId(Integer clientId) {
-
-        this.clientId = clientId;
-
-    }
-
-
-    // Please note that adding a method similar to Python's `to_dict()`
-    // is strongly discouraged in Java -- please use an object mapper (Jackson) instead
 }

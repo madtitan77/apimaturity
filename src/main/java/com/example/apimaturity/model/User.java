@@ -36,9 +36,10 @@ public class User {
     @Column(name = "password")
     private String password;
 
+
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private Role role;
+    private Role.RoleType role;
 
     @Column(name = "name")
     private String name;
@@ -80,11 +81,11 @@ public class User {
     }
 
     public Role getRole() {
-        return this.role;
+        return new Role(this.role.name());
     }
 
     public void setRole(Role role) {
-        this.role = role;
+        this.role = role.getRoleType();
     }
 
     public String getName() {
@@ -113,7 +114,7 @@ public class User {
 
     public boolean isAdmin() {
 
-        return this.role.getRoleType().equals(RoleType.ADMIN);
+        return this.role.equals(RoleType.ADMIN);
     
     }
     

@@ -33,37 +33,12 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private UserRepo userRepo;
 
-    //@Override
-    //public List<Client> findClientsForUser(String userEmail, String role) {
-        // logger.info("User {} with role {} checking clients access", userEmail, role);
-        // if (RoleType.ADMIN.name().equals(role)) {
-        //     logger.info("User {} is ADMIN", userEmail);
-        //     return findAllClients();
-        // } else if (RoleType.USER.name().equals(role)) {
-        //     try {
-        //         User user = userRepo.findByEmail(userEmail);
-        //         logger.info("User {} with id {} is {}", user.getEmail(), user.getId(), user.getRole());
-        //         List<Client> userClients = clientRepo.findByUser(user);
-        //         logger.info("User {} has direct access to {}", userEmail, userClients);
-        //        /* List<Client> indirectUserClients = clientRepo.findClientsByUserPermission(userEmail); // Store result in a variable
-        //         logger.info("User {} has indirect access to {}", userEmail, indirectUserClients);
-        //         userClients.addAll(indirectUserClients); // Use the stored result */
-        //        logger.info("User {} has total access to {}", userEmail, userClients);
-        //         return userClients;
-        //     } catch (Exception e) {
-        //         logger.error("Error finding clients for user {}: {}", userEmail, e.getMessage(), e);
-        //         return new ArrayList<>();
-        //     }
-        // } else {
-        //     return new ArrayList<>();
-        // }
-    //}
-
+    
     @Override
     public List<Client> findClientsUserHasAccessTo(User user){
 
         if (user.isAdmin()) return clientRepo.findAll();
-        return clientRepo.findByUser(user);
+        return clientRepo.findByCreator(user);
         
     }
     

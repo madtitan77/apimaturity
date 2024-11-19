@@ -103,7 +103,7 @@ public class User {
     public void setCreatedClients(Set<Client> createdClients) {
         this.createdClients = createdClients;
     }
-
+    
     public Set<Client> getAccessibleClients() {
         return accessibleClients;
     }

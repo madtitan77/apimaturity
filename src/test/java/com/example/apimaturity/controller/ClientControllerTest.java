@@ -3,7 +3,11 @@ package com.example.apimaturity.controller;
 
 import com.example.apimaturity.dto.ClientDTO;
 import com.example.apimaturity.model.Client;
+import com.example.apimaturity.model.User;
 import com.example.apimaturity.service.ClientService;
+import com.example.apimaturity.service.UserService;
+
+import io.jsonwebtoken.lang.Collections;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,16 +16,20 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 class ClientControllerTest {
@@ -30,6 +38,9 @@ class ClientControllerTest {
 
     @Mock
     private ClientService clientService;
+
+    @Mock
+    private UserService userService;
 
     @Mock
     private Authentication authentication;
@@ -53,7 +64,7 @@ class ClientControllerTest {
         clientDTO.setNotes("Test Notes");
 
         // Mock user details
-        UserDetails userDetails = User.withUsername("testuser")
+        UserDetails userDetails = org.springframework.security.core.userdetails.User.withUsername("testuser")
                 .password("password")
                 .authorities("ROLE_USER")
                 .build();
@@ -92,11 +103,16 @@ class ClientControllerTest {
         clientDTO.setIndustry("Updated Industry");
         clientDTO.setNotes("Updated Notes");
 
-        UserDetails userDetails = User.withUsername("testuser")
+        User user = new User();
+        user.setEmail(" emain@example.com");
+
+        UserDetails userDetails = org.springframework.security.core.userdetails.User.withUsername("testuser")
                 .password("password")
                 .authorities("ROLE_USER")
                 .build();
         when(authentication.getPrincipal()).thenReturn(userDetails);
+        when(userService.findByEmail(anyString())).thenReturn(user);
+   
 
         // Mock client service
         Client client = new Client();
@@ -106,6 +122,7 @@ class ClientControllerTest {
         client.setNotes("Updated Notes");
 
         when(clientService.updateClient(any(Client.class))).thenReturn(client);
+        when(userService.getCreatedClients(any(User.class))).thenReturn(new ArrayList<>(java.util.Collections.singletonList(client)));
 
         // Perform PUT request to update client
         mockMvc.perform(put("/api/apimaturity/clients/1")

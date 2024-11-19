@@ -32,13 +32,17 @@ public class ClientRepoTest {
 
     private User user1;
     private User user2;
+    private User user3;
     private Client client1;
     private Client client2;
+    private Client client3;
+    private Role userRole = new Role(RoleType.USER.toString());
+    private Role adminRole = new Role(RoleType.ADMIN.toString());
+
 
     @BeforeEach
     public void setUp() {
-        Role userRole = new Role(RoleType.USER.toString());
-        //Role adminRole = new Role(RoleType.ADMIN.toString());
+     
 
         // Create users
         user1 = new User();
@@ -52,9 +56,15 @@ public class ClientRepoTest {
         user2.setPassword("password");
         user2.setRole(userRole);
 
+        user3 = new User();
+        user3.setEmail("user3@example.com");
+        user3.setPassword("password");
+        user3.setRole(adminRole);
+
 
         user1 = userRepo.save(user1);
         user2 = userRepo.save(user2);
+        user3 = userRepo.save(user3);
 
         // Create clients
         client1 = new Client();
@@ -69,14 +79,15 @@ public class ClientRepoTest {
         client2.setNotes("Notes Two");
         client2.setCreator(user1);
 
+        client3 = new Client();
+        client3.setName("Client Three");
+        client3.setIndustry("Industry Three");
+        client3.setNotes("Notes Three");
+        client3.setCreator(user3);
+
         client1 = clientRepo.save(client1);
         client2 = clientRepo.save(client2);
-
-        // Grant access to user2 for client1
-        /*Set<User> usersWithAccess = new HashSet<>();
-        usersWithAccess.add(user2);
-        client1.setUsersWithAccess(usersWithAccess);
-        client1 = clientRepo.save(client1);*/
+        client3 = clientRepo.save(client3);
 
         //Grant access to user2 for client1
         Set<Client> clientsToProvideAccessTo = new HashSet<>();
@@ -92,4 +103,25 @@ public class ClientRepoTest {
         assertEquals(1, clients.size());
         assertTrue(clients.contains(client1));
     }
+
+
+    @Test
+    public void testFindByCreator() {
+        
+        List<Client> clients = clientRepo.findByCreator(user1);
+        assertEquals(2, clients.size());
+        assertTrue(clients.contains(client1));
+        assertTrue(clients.contains(client2));
+    }
+
+    @Test
+    public void testFindAll() {
+        List<Client> clients = clientRepo.findAll();
+        assertEquals(3, clients.size());
+        assertTrue(clients.contains(client1));
+        assertTrue(clients.contains(client2));
+        assertTrue(clients.contains(client3));
+
+    }
+
 }

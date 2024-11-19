@@ -19,7 +19,6 @@ import com.example.apimaturity.service.ClientService;
 import com.example.apimaturity.service.UserService;
 import com.example.apimaturity.model.Client; // Add this import statement
 import com.example.apimaturity.model.User;
-import com.example.apimaturity.dto.UserDTO;
 import com.example.apimaturity.dto.ClientDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,6 +63,7 @@ public class ClientController {
         Client client = clientDTO.toEntity();
         client.setCreator(user);
         Client savedClient = clientService.saveClient(client);
+        userService.addCreatedClient(user, client);
         logger.info("Created Client: {}", savedClient);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
     }
@@ -74,7 +74,7 @@ public class ClientController {
      { 
         User user = getUserFromAuthentication(authentication);
         //only the user that has created the client can delete it
-        if (user.getCreatedClients().stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
+        if (userService.getCreatedClients(user).stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
             clientService.deleteClient(clientId);
             return ResponseEntity.noContent().build();
         }
@@ -88,7 +88,7 @@ public class ClientController {
                                                 Authentication authentication) {
         User user = getUserFromAuthentication(authentication);
         //only the user that has created the client can updated it
-        if (user.getCreatedClients().stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
+        if (userService.getCreatedClients(user).stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
             Client client = clientDTO.toEntity();
             client.setClientId(clientId);
             Client updatedClient = clientService.updateClient(client);

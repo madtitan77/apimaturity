@@ -33,7 +33,8 @@ public class UserController {
     public ResponseEntity<?> createUser(@RequestBody UserDTO newUserDTO, @RequestHeader Map<String, String> headers) {
         try {
             User user = userService.createUser(newUserDTO.toEntity(passwordEncoder));
-            return new ResponseEntity<>(user, HttpStatus.CREATED);
+
+            return new ResponseEntity<>(UserDTO.fromEntity(user), HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
             // Log the exception details for debugging purposes
             logger.error("Error creating user: " + e.getMessage());

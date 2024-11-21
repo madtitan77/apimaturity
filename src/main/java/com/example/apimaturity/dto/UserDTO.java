@@ -8,7 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class UserDTO {
     private String email;
     private String password;
-    private String role;
+    //default role is user
+    private String role = Role.RoleType.USER.toString();
 
    
     
@@ -42,5 +43,13 @@ public class UserDTO {
         newUser.setPassword(passwordEncoder.encode(this.getPassword()));
         newUser.setRole(new Role(this.role));
         return newUser;
+    }
+
+    public static UserDTO fromEntity(User user) {
+        UserDTO dto = new UserDTO();
+        dto.setEmail(user.getEmail());
+        //dto.setRole(user.getRole().getRoleType().toString());
+        // Do not set the password for security reasons
+        return dto;
     }
 }

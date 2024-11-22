@@ -53,32 +53,8 @@ public class ClientServiceImplTest {
         List<Client> result = clientService.findClientsUserHasAccessTo(user1);
 
         assertEquals(allClients.size(), result.size());
+        
     }
 
-    /* 
-    @Test
-    public void userShouldBeAbleToSeeAllClientsThatHasCreated() {
-        List<Client> userClients = Arrays.asList(new Client());
-        when(clientRepo.findByUser("user")).thenReturn(userClients);
-        when(clientRepo.findClientsByUserPermission("user")).thenReturn(Arrays.asList());
-
-        List<Client> result = clientService.findClientsForUser("user", RoleType.USER.name());
-
-        assertEquals(userClients.size(), result.size());
-        verify(clientRepo, times(1)).findByUser("user");
-    }
-
-    @Test
-    public void whenUserWithNoDirectClientsShouldReturnPermittedClients() {
-        List<Client> permittedClients = new ArrayList<>(Arrays.asList(new Client())); // Make the list modifiable
-        when(clientRepo.findByUser("user")).thenReturn(new ArrayList<>()); // Return a modifiable empty list
-        when(clientRepo.findClientsByUserPermission("user")).thenReturn(permittedClients);
-
-        List<Client> result = clientService.findClientsForUser("user", RoleType.USER.name());
-
-        assertEquals(permittedClients.size(), result.size());
-        verify(clientRepo, times(1)).findByUser("user");
-        verify(clientRepo, times(1)).findClientsByUserPermission("user");
-    }
-        */
+   
 }

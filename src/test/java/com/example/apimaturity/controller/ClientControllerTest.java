@@ -118,8 +118,8 @@ class ClientControllerTest {
         client.setIndustry("Updated Industry");
         client.setNotes("Updated Notes");
 
-        when(clientService.updateClient(any(Client.class))).thenReturn(client);
-        when(userService.getCreatedClients(any(User.class))).thenReturn(new ArrayList<>(java.util.Collections.singletonList(client)));
+        when(clientService.updateClient(any(Client.class), any(User.class))).thenReturn(client);
+        //when(userService.getCreatedClients(any(User.class))).thenReturn(new ArrayList<>(java.util.Collections.singletonList(client)));
 
         // Perform PUT request to update client
         mockMvc.perform(put("/api/apimaturity/clients/1")

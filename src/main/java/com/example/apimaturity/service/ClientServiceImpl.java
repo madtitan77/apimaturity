@@ -53,12 +53,20 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deleteClient(Integer clientId) {
-    clientRepo.deleteById(clientId);
+    //TODO: check the null checking here
+    public boolean deleteClient(Integer clientId, User user) {
+
+        Client existingClient = clientRepo.findById(clientId).orElse(null);
+        if (existingClient != null && clientId == user.getId()) {
+            clientRepo.deleteById(clientId);
+            return true;
+        }
+        return false;
     }
 
     @Override
     @Transactional
+    //TODO: check the null check here
     public Client saveClient(Client client) {
         String email = SecurityUtils.getCurrentUserUsername();
         logger.info("User {} is creating a new client {}", email,client.getName());
@@ -69,9 +77,10 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public Client updateClient(Client client) {
+    public Client updateClient(Client client, User user) {
         Client existingClient = clientRepo.findById(client.getClientId()).orElse(null);
-        if (existingClient != null) {
+        //TODO : is the null checking here a good practice?
+        if (existingClient != null && client.getCreator().getId() == user.getId()) {
             existingClient.setName(client.getName());
             existingClient.setIndustry(client.getIndustry());
             // Update other fields as necessary

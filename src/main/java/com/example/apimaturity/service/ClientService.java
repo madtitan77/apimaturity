@@ -10,8 +10,9 @@ public interface ClientService {
    // List<Client> findClientsForUser(String user, String role);
     List<Client> findClientsUserHasAccessTo(User user);
     Client saveClient(Client client);
-    void deleteClient(Integer clientId);
+    boolean deleteClient(Integer clientId, User user);
     Client findClientById(Integer clientId);
-    Client updateClient(Client client);
+    Client updateClient(Client client,User user);
     boolean userHasAccessToClient(User user, Client client);
+    
 }

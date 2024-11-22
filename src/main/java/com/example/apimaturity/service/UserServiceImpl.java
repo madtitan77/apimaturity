@@ -26,18 +26,4 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    @Override
-    public void addCreatedClient(User user, Client client) {
-        if (!user.getCreatedClients().contains(client)) {
-            user.getCreatedClients().add(client);
-            client.setCreator(user);
-            userRepository.save(user);
-        }
-    }
-
-    @Override
-    public List<Client> getCreatedClients(User user) {
-        Set<Client> sClients = user.getCreatedClients();
-        return new ArrayList<>(sClients);
-    }
 }

@@ -10,6 +10,4 @@ import com.example.apimaturity.model.Client;
 public interface UserService {
     User createUser(User newUser);
     User findByEmail(String email);
-    void addCreatedClient(User user, Client client);
-    List <Client> getCreatedClients(User user);
 }

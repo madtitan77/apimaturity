@@ -2,6 +2,7 @@ package com.example.apimaturity.model;
 
 import com.example.apimaturity.security.Role;
 import com.example.apimaturity.security.Role.RoleType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,8 +45,6 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "creator")
-    private Set<Client> createdClients = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -96,13 +95,6 @@ public class User {
         this.name = name;
     }
 
-    public Set<Client> getCreatedClients() {
-        return createdClients;
-    }
-
-    public void setCreatedClients(Set<Client> createdClients) {
-        this.createdClients = createdClients;
-    }
     
     public Set<Client> getAccessibleClients() {
         return accessibleClients;

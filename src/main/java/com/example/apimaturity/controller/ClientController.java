@@ -63,7 +63,7 @@ public class ClientController {
         Client client = clientDTO.toEntity();
         client.setCreator(user);
         Client savedClient = clientService.saveClient(client);
-        userService.addCreatedClient(user, client);
+        //userService.addCreatedClient(user, client);
         logger.info("Created Client: {}", savedClient);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
     }
@@ -73,12 +73,9 @@ public class ClientController {
                                              Authentication authentication )
      { 
         User user = getUserFromAuthentication(authentication);
-        //only the user that has created the client can delete it
-        if (userService.getCreatedClients(user).stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
-            clientService.deleteClient(clientId);
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        
+        clientService.deleteClient(clientId,user);
+        return ResponseEntity.noContent().build();
         
     }
 
@@ -87,14 +84,10 @@ public class ClientController {
                                                 @RequestBody ClientDTO clientDTO,
                                                 Authentication authentication) {
         User user = getUserFromAuthentication(authentication);
-        //only the user that has created the client can updated it
-        if (userService.getCreatedClients(user).stream().anyMatch(cli -> cli.getClientId().equals(clientId))) {
-            Client client = clientDTO.toEntity();
-            client.setClientId(clientId);
-            Client updatedClient = clientService.updateClient(client);
-            return ResponseEntity.ok(updatedClient);
-        }
-        return ResponseEntity.notFound().build();
+        Client client = clientDTO.toEntity();
+        client.setClientId(clientId);
+        Client updatedClient = clientService.updateClient(client,user);
+        return ResponseEntity.ok(updatedClient);
 
     }
 

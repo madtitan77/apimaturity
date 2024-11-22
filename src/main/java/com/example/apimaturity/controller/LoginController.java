@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import com.example.apimaturity.security.JwtUtils;
+import com.example.apimaturity.dto.LoginRequestDTO;
 import com.example.apimaturity.security.JwtResponse;  
 
 
@@ -26,7 +27,7 @@ public class LoginController {
     private JwtUtils jwtUtils;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequestDTO loginRequest) {
         logger.info("Attempting to authenticate user: {}", loginRequest.getUsername());
 
         try {
@@ -53,24 +54,3 @@ public class LoginController {
 
 }
 
-class LoginRequest {
-    private String username;
-    private String password;
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-}

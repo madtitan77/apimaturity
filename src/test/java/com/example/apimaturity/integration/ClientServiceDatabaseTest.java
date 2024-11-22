@@ -12,8 +12,12 @@ import com.example.apimaturity.dto.UserDTO;
 import com.example.apimaturity.model.Client;
 import com.example.apimaturity.model.User;
 import com.example.apimaturity.security.Role;
+import com.example.apimaturity.security.Role.RoleType;
 import com.example.apimaturity.service.ClientServiceImpl;
+import com.example.apimaturity.service.UserService;
 import com.example.apimaturity.repository.ClientRepo;
+import com.example.apimaturity.repository.UserRepo;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,6 +48,9 @@ public class ClientServiceDatabaseTest {
     @Autowired
     private ClientServiceImpl clientService;
 
+    @Autowired
+    private UserRepo userrRepo;
+
 
     @Autowired
     private MockMvc mockMvc;
@@ -57,6 +64,12 @@ public class ClientServiceDatabaseTest {
     }
 
     private User newUserAPICall(String email, String password) throws Exception {
+        // Check if user already exists
+        User existingUser = userrRepo.findByEmail(email);
+        if (existingUser != null) {
+            return existingUser;
+        }
+
         // Create UserDTO object
         UserDTO userDTO = new UserDTO();
         userDTO.setEmail(email);
@@ -132,6 +145,18 @@ public class ClientServiceDatabaseTest {
         String responseJson = result.getResponse().getContentAsString();
         return objectMapper.readValue(responseJson, new TypeReference<List<Client>>() {});
     }
+
+    private User setUserRoleDirectlyonDB(User user, Role role) {
+
+        User existingUser = userrRepo.findByEmail(user.getEmail());
+        //TODO : is the null checking here a good practice?
+        if (existingUser != null ) {
+            user.setRole(role);
+            return userrRepo.save(existingUser);
+        } else {
+            return null;
+        }
+    }
     
     @Test
     public void whenAdminShouldReturnAllClients() throws Exception {
@@ -142,6 +167,11 @@ public class ClientServiceDatabaseTest {
         String token_user2 = loginUserWithAPI("test2@example.com", "password");
         Client client2 = newClientAPICall("Client2", "another Client", "Telco", token_user1);
         
+        //making user1 admin directly in the database. no API is supported yet.
+        Role role = new Role();
+        role.setRoleType(RoleType.ADMIN);
+        setUserRoleDirectlyonDB(user1,role);
+
 
         List<Client> allClients = List.of(client1, client2);
         List<Client> result = getClientsAPICall(token_user1);

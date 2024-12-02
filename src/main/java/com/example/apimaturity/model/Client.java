@@ -1,6 +1,7 @@
 package com.example.apimaturity.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +28,7 @@ public class Client {
     
     @ManyToOne(optional = false)
     @JoinColumn(name = "creator_id", nullable = false)
+    @JsonBackReference
     private User creator;
 
     @ManyToMany(mappedBy = "accessibleClients")
@@ -79,6 +81,10 @@ public class Client {
 
     public void setUsersWithAccess(Set<User> usersWithAccess) {
         this.usersWithAccess = usersWithAccess;
+    }
+
+    public Object getId() {
+        return this.clientId;
     }
     
 }

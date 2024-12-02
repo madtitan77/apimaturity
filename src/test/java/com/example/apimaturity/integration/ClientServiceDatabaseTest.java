@@ -1,6 +1,7 @@
 package com.example.apimaturity.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -157,7 +158,29 @@ public class ClientServiceDatabaseTest {
             return null;
         }
     }
-    
+
+    private boolean areClientListsEqual(List<Client> list1, List<Client> list2) {
+        if (list1.size() != list2.size()) {
+            return false;
+        }
+        for (Client client1 : list1) {
+            boolean found = false;
+            for (Client client2 : list2) {
+                if (client1.getId().equals(client2.getId()) &&
+                    client1.getName().equals(client2.getName()) &&
+                    client1.getNotes().equals(client2.getNotes()) &&
+                    client1.getIndustry().equals(client2.getIndustry())) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Test
     public void whenAdminShouldReturnAllClients() throws Exception {
         User user1 = newUserAPICall("test1@example.com", "password");
@@ -177,7 +200,8 @@ public class ClientServiceDatabaseTest {
         List<Client> result = getClientsAPICall(token_user1);
 
         assertEquals(allClients.size(), result.size());
-        assertEquals(allClients, result);
+
+        assertTrue(areClientListsEqual(allClients, result));
     }
 
     
